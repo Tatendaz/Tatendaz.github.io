@@ -1,95 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Test Page: Don't Panic</title>
-  <meta charset="utf-8">
-  <style>
-  /*global styles*/
-    a {
-      color:#ff0000;
-    }
-    h2{
-      font-size: 30px
-    }
-    html , body {
-      margin: 0;
-      padding:0;
-    }
-    h1{
-      font-size: 7vw;
-      margin-top: 0;
-    }
-/*bio styles*/
-    .bio-box {
-      border: 1px solid black;
-      font-size: 1rem;
-      float:left;
-      width:23%;
-      box-sizing: border-box;
-      margin: 40px 1% 0;
-      padding:0 2% 2%;
-    }
-    .bio-box h3{
-      font-size: 1.5rem;
-      color:#fff;
-      margin: -40px 0 1em;
-      text-align:center;
-    }
-    .bio-box img{
-      width:100%;
-    }
-    .bio-wrapper{
-      font-size: 24px;
-      margin:auto;
-      max-width: 960px;
-    overflow: hidden;
-  }
-
-    .bio-copy a {
-      color: green;
-    }
-    .bio-copy{
-      font-size: 1em;
-      line-height: 1.5;
-    }
-    /*social styles*/
-    .social-link{
-      color:#fff;
-      background: rgba(150, 150, 150, 0.5);
-      display:inline-block;
-      border-radius:99px;
-      font-family: helvetica, arial, sans;
-      font-size: 1rem;
-      font-weight: bold;
-      line-height:1;
-      padding-top: 0.85em;
-      text-align: center;
-      vertical-align:middle;
-      width:2.5em;
-      height:2.5em;
-      box-sizing:border-box;
-    }
-    /*Hero styles*/
-    .full-hero {
-      background-color: #c7dbfc;
-      height:50vw;
-    }
-    /*social-list*/
-    .social-list{
-      list-style: none;
-      padding:0;
-      text-align:center;
-    }
-    .social-list > li{
-      display:inline-block;
-      margin:0 0.5em;
-    }
-
-  </style>
-</head>
+{% include head.html %}
 
 <body>
+  {% include header.html %}
   <div class="full-hero hero-home">
   <h1>I'm an h1</h1>
   <ul class="social-list">
@@ -107,7 +22,7 @@
     </li>
   </ul>
 </div>
-  <h2>I'm an h2</h2>
+<h2>I am an h2</h2>
 
   <div class="bio-wrapper">
   <div class="bio-box">
@@ -178,6 +93,6 @@
     Other related tutorials can be found at
     <a href="https://learnenough.com/">learnenough.com</a>.
   </p>
+  {% include footer.html %}
 </body>
-
 </html>
