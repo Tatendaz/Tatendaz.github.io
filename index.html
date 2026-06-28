@@ -1,148 +1,239 @@
----
-layout: default
----
-<div class="home">
-<div class="full-hero hero-home">
-  <div class="hero-content">
-  <h1>CODE DANGEROUSLY</h1>
-  <ul class="social-list">
-    <li>
-      <a href="http://example.com/" class="social-link">
-        <i class="fa fa-facebook"></i>
-      </a>
-    </li>
-    <li>
-      <a href="http://example.com/" class="social-link">
-        <i class="fa fa-twitter"></i>
-      </a>
-    </li>
-    <li>
-      <a href="http://example.com/" class="social-link">
-        <i class="fa fa-github"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tatenda Zhou — Software &amp; Systems Architect</title>
+<meta name="description" content="Software & Systems Architect / SRE with 10+ years in enterprise software. I build AI agents, Web3, and native mobile apps — end to end. Open to consulting, advisory & speaking, remote.">
+<meta property="og:title" content="Tatenda Zhou — Software & Systems Architect">
+<meta property="og:description" content="10+ years building systems end-to-end: AI agents · Web3 · Mobile · SRE. Open to consulting, advisory & speaking — remote.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tatendaz.github.io/">
+<link rel="icon" type="image/jpeg" href="assets/avatar.jpg">
+<script>
+  // set theme before paint to avoid flash — order: ?theme= > saved > system
+  (function(){try{
+    var q=new URLSearchParams(location.search).get('theme');
+    var s=localStorage.getItem('theme');
+    var sys=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+    document.documentElement.setAttribute('data-theme', q||s||sys);
+  }catch(e){document.documentElement.setAttribute('data-theme','light');}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---- light (editorial paper) ---- */
+  :root{
+    --paper:#F4F1E9; --surface:#FCFBF7; --raised:#FFFFFF;
+    --ink:#1A1613; --ink-2:#6E665A; --line:#E5DECF; --line-2:#D8CFBB;
+    --accent:#B0502E; --accent-press:#8C3D20; --on-accent:#FFFFFF; --accent-wash:rgba(176,80,46,.08);
+    --ok:#3F8F55; --nav-bg:rgba(244,241,233,.82); --avatar-gray:.18; --shadow:rgba(26,22,19,.12);
+  }
+  /* ---- dark (warm-charcoal editorial) ---- */
+  :root[data-theme="dark"]{
+    --paper:#161617; --surface:#1D1D1F; --raised:#232325;
+    --ink:#ECECEE; --ink-2:#9A9AA0; --line:#292A2C; --line-2:#35363A;
+    --accent:#C75E39; --accent-press:#A94B2C; --on-accent:#FFFFFF; --accent-wash:rgba(199,94,57,.12);
+    --ok:#5FBE7C; --nav-bg:rgba(22,22,23,.82); --avatar-gray:.10; --shadow:rgba(0,0,0,.5);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .25s ease,color .25s ease;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px;}
+  .disp{font-family:'Space Grotesk',sans-serif;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);}
 
-<div class="home-callout">
-  <h1 class="callout-title">The Learn Enough Story</h1>
-  <div class="callout-copy">
-    <p>
-      Learn Enough to Be Dangerous is a leader in the movement to teach the world
-      <em>technical sophistication</em>, which includes both "hard skills" like
-      coding, command lines, and version control, and "soft skills" like guessing
-      keyboard shortcuts, Googling error messages, and knowing when to just
-      reboot the darn thing.
-    </p>
-    <p>
-      We believe there are <strong>at least a billion people</strong> who can
-      benefit from learning technical sophistication, probably more. To join our
-      movement, <a href="https://learnenough.com/#email_list">sign up for our
-      official email list</a> now.
-    </p>
-    <h3>Background</h3>
-    <p>
-      Learn Enough to Be Dangerous is an outgrowth of the
-      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a> and the
-      <a href="http://www.softcover.io/">Softcover publishing platform</a>. This
-      page is part of the sample site for <a
-      href="https://learnenough.com/css-tutorial"><em>Learn Enough CSS and Layout
-      to Be Dangerous</em></a>, which teaches the basicics of
-      <strong>C</strong>ascading <strong>S</strong>tyle
-      <strong>S</strong>heets, the language that
-      allows web pages to be styled. Other related tutorials can be found at
-      <a href="https://learnenough.com/">learnenough.com</a>.
-    </p>
-  </div>
-</div>
-<div class="home-section">
-  <h4>Most recent post</h4>
-  <div class="blog-posts">
-    <header class="post-header">
-      <h2>
-        <a href="{{ site.posts.first.url }}">
-        {{ site.posts.first.title }}</a>
-      </h2>
-      <div class="post-byline">
-        <img src="{{ site.posts.first.gravatar }}">
-        <a href="{{ site.posts.first.authorTwitter }}"
-        class="social-link">
-          <i class="fa fa-twitter"></i>
-        </a>
-        by: {{ site.posts.first.author }}
-        <span> - {{ site.posts.first.date | date: '%B %d, %Y' }}</span>
-      </div>
-    </header>
-    <div class="posts-image"
-    style="background-image:url({{ site.posts.first.postHero }})"></div>
-    {{ site.posts.first.excerpt }}
-  </div>
-</div>
-<div class="home-section">
-  <h2>THE FOUNDERS</h2>
-  <p>
-    Learn Enough to Be Dangerous was founded in 2015 by Michael Hartl, Lee
-    Donahoe, and Nick Merwin. We believe that the kind of technical
-    sophistication taught by the Learn Enough tutorials can benefit at least a
-    billion people, and probably more.
-  </p>
+  nav{position:sticky;top:0;z-index:20;background:var(--nav-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  nav .row{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  nav .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:-.2px;}
+  .navright{display:flex;align-items:center;gap:26px;}
+  nav .links{display:flex;gap:26px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink-2);}
+  nav .links a:hover{color:var(--accent);}
+  @media(max-width:640px){
+    nav .row{flex-wrap:wrap;height:auto;padding:10px 0;row-gap:9px;}
+    .navright{width:100%;justify-content:space-between;gap:14px;}
+    nav .links{flex-wrap:wrap;gap:10px 14px;font-size:12px;}
+  }
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;
+    border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer;transition:.15s;}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+  .theme-toggle svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .theme-toggle .sun{display:none;} :root[data-theme="dark"] .theme-toggle .sun{display:block;}
+  :root[data-theme="dark"] .theme-toggle .moon{display:none;}
 
-  <div class="bio-wrapper">
-    <div class="bio-box">
-      <img src="http://placekitten.com/g/400/400">
-      <h3>Michael Hartl</h3>
-      <a href="http://twitter.com/mhartl" class="social-link">
-        <i class="fa fa-twitter"></i>
-      </a>
-      <div class="bio-copy">
-        <p>
-          Known for his dazzling charm, rapier wit, and unrivaled humility,
-          Michael is the creator of the
-          <a href="http://railstutorial.org/">Ruby on Rails
-          Tutorial</a> and principal author of the
-          <a href="https://learnenough.com/">
-          Learn Enough to Be Dangerous</a> introductory sequence.
-        </p>
-        <p>
-          Michael is also notorious as the founder of
-          <a href="http://tauday.com/">Tau Day</a> and
-          author of <a href="http://tauday.com/tau-manifesto"><em>The Tau
-          Manifesto</em></a>, but rumors that he's secretly a supervillain are
-          slightly exaggerated.
-        </p>
-      </div>
+  .hero{padding:84px 0 70px;}
+  .hero .inner{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;}
+  @media(max-width:760px){.hero .inner{grid-template-columns:1fr;}.hero{padding:56px 0 48px;}}
+  .pill{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line-2);padding:7px 15px;border-radius:30px;}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(63,143,85,.16);}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(42px,7vw,68px);line-height:1.02;letter-spacing:-2.4px;margin:22px 0 10px;}
+  h1 .accent{color:var(--accent);}
+  .role{font-size:clamp(18px,3.2vw,23px);font-weight:600;color:var(--ink);}
+  .lede{color:var(--ink-2);font-size:18px;max-width:540px;margin:20px 0 30px;}
+  .cta{display:flex;flex-wrap:wrap;gap:11px;}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;padding:12px 18px;border-radius:10px;
+    border:1px solid var(--line-2);background:var(--surface);color:var(--ink);transition:.15s;}
+  .btn:hover{border-color:var(--ink);transform:translateY(-1px);}
+  .btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}
+  .btn.primary:hover{background:var(--accent-press);border-color:var(--accent-press);}
+  .btn svg{width:16px;height:16px;}
+  .avatar{width:206px;height:248px;border-radius:14px;object-fit:cover;object-position:center 20%;
+    border:1px solid var(--line-2);box-shadow:0 18px 40px var(--shadow);filter:grayscale(var(--avatar-gray));}
+  @media(max-width:760px){.avatar{width:132px;height:150px;}}
+
+  section{padding:60px 0;border-top:1px solid var(--line);scroll-margin-top:80px;}
+  h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(27px,4.2vw,36px);letter-spacing:-1.1px;margin:12px 0 28px;max-width:760px;}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  @media(max-width:680px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--surface);padding:26px 24px;}
+  .card .ic{color:var(--accent);}
+  .card .ic svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;margin:14px 0 7px;letter-spacing:-.3px;}
+  .card p{color:var(--ink-2);font-size:15px;}
+
+  .band{background:var(--accent-wash);border:1px solid var(--line-2);border-left:3px solid var(--accent);border-radius:12px;
+    padding:32px 34px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+  .band h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;margin-bottom:8px;letter-spacing:-.4px;}
+  .band p{color:var(--ink-2);font-size:15.5px;max-width:600px;}
+
+  .worklist{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:680px){.worklist{grid-template-columns:1fr;}}
+  .work{display:block;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:22px;transition:.15s;}
+  .work:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 14px 30px var(--shadow);}
+  .work .k{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2);font-weight:600;letter-spacing:1.2px;}
+  .work h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:8px 0 8px;letter-spacing:-.3px;}
+  .work p{color:var(--ink-2);font-size:14px;}
+  .work .arr{color:var(--accent);font-weight:600;margin-top:14px;display:inline-block;font-size:13.5px;font-family:'JetBrains Mono',monospace;}
+
+  footer{padding:72px 0 46px;border-top:1px solid var(--line);text-align:center;scroll-margin-top:80px;}
+  footer .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5vw,44px);letter-spacing:-1.6px;}
+  footer .big .accent{color:var(--accent);}
+  footer .sub{color:var(--ink-2);margin:15px auto 28px;max-width:500px;}
+  footer .social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .copy{color:var(--ink-2);opacity:.7;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.3px;margin-top:42px;}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap row">
+  <div class="brand">Tatenda&nbsp;Zhou</div>
+  <div class="navright">
+    <div class="links">
+      <a href="#build">What I build</a>
+      <a href="#leaders">For leaders</a>
+      <a href="#work">Selected work</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="bio-box">
-      <img src="http://placekitten.com/g/400/400">
-      <h3>Lee Donahoe</h3>
-      <a href="https://twitter.com/leedonahoe" class="social-link">
-        <i class="fa fa-twitter"></i>
-      </a>
-      <div class="bio-copy">
-        <p>
-          When he's not literally swimming with sharks or hunting powder stashes
-          on his snowboard, you can find Lee in front of his computer designing
-          interfaces, doing front-end development, or writing some of the
-          interface-related Learn Enough tutorials.
-        </p>
-      </div>
-    </div>
-    <div class="bio-box">
-      <img src="http://placekitten.com/g/400/400">
-      <h3>Nick Merwin</h3>
-      <a href="https://twitter.com/nickmerwin" class="social-link">
-        <i class="fa fa-twitter"></i>
-      </a>
-      <div class="bio-copy">
-        <p>
-          You may have seen him shredding guitar live with Capital Cities on
-          Jimmy Kimmel, Conan, or The Ellen Show, but rest assured Nick is a true
-          nerd at heart. He's just as happy shredding well-spec'd lines of code
-          from a tour bus as he is from his kitchen table.
-        </p>
-      </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap inner">
+  <div>
+    <span class="pill"><span class="dot"></span>Open to consulting, advisory &amp; speaking — remote</span>
+    <h1>Tatenda <span class="accent">Zhou</span></h1>
+    <div class="role">Software &amp; Systems Architect · SRE</div>
+    <p class="lede">10+ years in enterprise software. I design and ship systems end-to-end — AI agents, Web3, and native iOS &amp; Android apps — taken all the way to production with cloud infra, monitoring &amp; alerting.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:tatendaz@me.com?subject=Let%27s%20work%20together">Work with me</a>
+      <a class="btn" href="https://github.com/Tatendaz" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 014 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/tatendazhou" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://x.com/realtatendazhou" target="_blank" rel="noopener">X · @realtatendazhou</a>
     </div>
   </div>
-</div>
-</div>
+  <img class="avatar" src="assets/avatar.jpg" alt="Tatenda Zhou">
+</div></header>
+
+<main class="wrap">
+
+  <section id="build">
+    <div class="eyebrow">What I build</div>
+    <h2>Systems, taken all the way to production.</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></span>
+        <h3>AI agents</h3><p>Production agents and multi-agent systems — from prototype to reliable, observable deployment.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 21 7v10l-9 5-9-5V7z"/><path d="M12 12 21 7M12 12v10M12 12 3 7"/></svg></span>
+        <h3>Web3</h3><p>Smart contracts and on-chain tooling, integrated with real products and real users.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
+        <h3>Native mobile</h3><p>iOS &amp; Android apps built for the store — auth, payments, polish, the whole path.</p>
+      </div>
+      <div class="card">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+        <h3>End-to-end &amp; SRE</h3><p>Cloud infra, CI/CD, monitoring &amp; alerting. I own reliability, not just features.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="leaders">
+    <div class="eyebrow">For business leaders</div>
+    <h2>Turn AI from buzzword into bottom-line.</h2>
+    <div class="band">
+      <div class="t">
+        <h3>Executive AI-adoption workshops</h3>
+        <p>I run hands-on sessions that get your whole team using AI daily — so productivity, and ROI, actually go up. Practical, tailored to how your business works, and measured by what changes after.</p>
+      </div>
+      <a class="btn primary" href="mailto:tatendaz@me.com?subject=AI%20workshop%20enquiry">Book a workshop →</a>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="eyebrow">Selected work</div>
+    <h2>A few things I've shipped.</h2>
+    <div class="worklist">
+      <a class="work" href="https://github.com/Tatendaz/showcase" target="_blank" rel="noopener">
+        <div class="k">PORTFOLIO</div><h3>Selected Work</h3>
+        <p>Architecture, screenshots &amp; write-ups across AI, quant, and mobile — without exposing client source.</p>
+        <span class="arr">Explore →</span>
+      </a>
+      <a class="work" href="https://github.com/Tatendaz/Vergance" target="_blank" rel="noopener">
+        <div class="k">SWIFT · macOS</div><h3>Vergance</h3>
+        <p>Gaze + voice as a hands-free input layer — look, speak, and your intent goes to Claude.</p>
+        <span class="arr">View repo →</span>
+      </a>
+      <a class="work" href="https://github.com/Tatendaz/langchain-fde-curriculum" target="_blank" rel="noopener">
+        <div class="k">PYTHON · AI</div><h3>LangChain FDE</h3>
+        <p>A deliverable-driven curriculum for shipping production agents as a forward-deployed engineer.</p>
+        <span class="arr">View repo →</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact"><div class="wrap">
+  <div class="big">Let's build something <span class="accent">worth shipping.</span></div>
+  <p class="sub">Available for consulting, fractional / advisory work, and speaking — remote, worldwide.</p>
+  <div class="social">
+    <a class="btn primary" href="mailto:tatendaz@me.com?subject=Hello%20Tatenda">tatendaz@me.com</a>
+    <a class="btn" href="https://github.com/Tatendaz" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/tatendazhou" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://x.com/realtatendazhou" target="_blank" rel="noopener">X</a>
+  </div>
+  <div class="copy">© 2026 Tatenda Zhou · Hand-built, served on GitHub Pages</div>
+</div></footer>
+
+<script>
+  (function(){
+    var btn=document.getElementById('themeToggle');
+    if(!btn)return;
+    btn.addEventListener('click',function(){
+      var cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+      document.documentElement.setAttribute('data-theme',cur);
+      try{localStorage.setItem('theme',cur);}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
