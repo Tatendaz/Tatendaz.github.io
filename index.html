@@ -51,7 +51,11 @@
   .navright{display:flex;align-items:center;gap:26px;}
   nav .links{display:flex;gap:26px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink-2);}
   nav .links a:hover{color:var(--accent);}
-  @media(max-width:640px){nav .links{display:none;}}
+  @media(max-width:640px){
+    nav .row{height:auto;min-height:62px;padding:10px 0;}
+    .navright{gap:14px;}
+    nav .links{flex-wrap:wrap;justify-content:flex-end;gap:10px 14px;font-size:11.5px;}
+  }
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;
     border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer;transition:.15s;}
   .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
@@ -80,7 +84,7 @@
     border:1px solid var(--line-2);box-shadow:0 18px 40px var(--shadow);filter:grayscale(var(--avatar-gray));}
   @media(max-width:760px){.avatar{width:132px;height:150px;}}
 
-  section{padding:60px 0;border-top:1px solid var(--line);}
+  section{padding:60px 0;border-top:1px solid var(--line);scroll-margin-top:80px;}
   h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(27px,4.2vw,36px);letter-spacing:-1.1px;margin:12px 0 28px;max-width:760px;}
 
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
@@ -105,7 +109,7 @@
   .work p{color:var(--ink-2);font-size:14px;}
   .work .arr{color:var(--accent);font-weight:600;margin-top:14px;display:inline-block;font-size:13.5px;font-family:'JetBrains Mono',monospace;}
 
-  footer{padding:72px 0 46px;border-top:1px solid var(--line);text-align:center;}
+  footer{padding:72px 0 46px;border-top:1px solid var(--line);text-align:center;scroll-margin-top:80px;}
   footer .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5vw,44px);letter-spacing:-1.6px;}
   footer .big .accent{color:var(--accent);}
   footer .sub{color:var(--ink-2);margin:15px auto 28px;max-width:500px;}
@@ -217,7 +221,7 @@
     <a class="btn" href="https://www.linkedin.com/in/tatendazhou" target="_blank" rel="noopener">LinkedIn</a>
     <a class="btn" href="https://x.com/realtatendazhou" target="_blank" rel="noopener">X</a>
   </div>
-  <div class="copy">© 2026 Tatenda Zhou · Built and deployed from github.com/Tatendaz</div>
+  <div class="copy">© 2026 Tatenda Zhou · Hand-built, served on GitHub Pages</div>
 </div></footer>
 
 <script>
