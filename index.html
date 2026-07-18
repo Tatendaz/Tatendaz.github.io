@@ -108,6 +108,9 @@
   .work h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:8px 0 8px;letter-spacing:-.3px;}
   .work p{color:var(--ink-2);font-size:14px;}
   .work .arr{color:var(--accent);font-weight:600;margin-top:14px;display:inline-block;font-size:13.5px;font-family:'JetBrains Mono',monospace;}
+  .work.wide{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .work.wide p{max-width:640px;}
+  .work.wide .arr{margin-top:0;white-space:nowrap;}
 
   footer{padding:72px 0 46px;border-top:1px solid var(--line);text-align:center;scroll-margin-top:80px;}
   footer .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5vw,44px);letter-spacing:-1.6px;}
@@ -192,20 +195,42 @@
     <div class="eyebrow">Selected work</div>
     <h2>A few things I've shipped.</h2>
     <div class="worklist">
-      <a class="work" href="https://github.com/Tatendaz/showcase" target="_blank" rel="noopener">
-        <div class="k">PORTFOLIO</div><h3>Selected Work</h3>
-        <p>Architecture, screenshots &amp; write-ups across AI, quant, and mobile — without exposing client source.</p>
-        <span class="arr">Explore →</span>
+      <a class="work" href="https://github.com/Tatendaz/promptups" target="_blank" rel="noopener">
+        <div class="k">JS · CLAUDE CODE HOOKS</div><h3>promptups</h3>
+        <p>Do reps while Claude thinks — webcam rep counting wired into Claude Code hooks, with a trash-talking coach.</p>
+        <span class="arr">View repo →</span>
+      </a>
+      <a class="work" href="https://github.com/Tatendaz/claude-usage" target="_blank" rel="noopener">
+        <div class="k">PYTHON · TERMINAL</div><h3>claude-usage</h3>
+        <p>Your Claude quota, live in the terminal status bar — session &amp; weekly windows in iTerm2, tmux, WezTerm, kitty, starship.</p>
+        <span class="arr">View repo →</span>
+      </a>
+      <a class="work" href="https://github.com/Tatendaz/yapui" target="_blank" rel="noopener">
+        <div class="k">JS · CLAUDE CODE SKILL</div><h3>yapui</h3>
+        <p>Yap at your UI — live HTML preview with a two-way feedback loop between you and the coding agent.</p>
+        <span class="arr">View repo →</span>
       </a>
       <a class="work" href="https://github.com/Tatendaz/Vergance" target="_blank" rel="noopener">
         <div class="k">SWIFT · macOS</div><h3>Vergance</h3>
         <p>Gaze + voice as a hands-free input layer — look, speak, and your intent goes to Claude.</p>
         <span class="arr">View repo →</span>
       </a>
+      <a class="work" href="https://github.com/Tatendaz/herdr-launcher" target="_blank" rel="noopener">
+        <div class="k">SHELL · macOS</div><h3>herdr-launcher</h3>
+        <p>Unofficial macOS Dock launcher for the herdr TUI — click the ram, get herdr in your terminal.</p>
+        <span class="arr">View repo →</span>
+      </a>
       <a class="work" href="https://github.com/Tatendaz/langchain-fde-curriculum" target="_blank" rel="noopener">
         <div class="k">PYTHON · AI</div><h3>LangChain FDE</h3>
         <p>A deliverable-driven curriculum for shipping production agents as a forward-deployed engineer.</p>
         <span class="arr">View repo →</span>
+      </a>
+      <a class="work wide" href="https://github.com/Tatendaz/showcase" target="_blank" rel="noopener">
+        <div>
+          <div class="k">PRIVATE WORK, WRITTEN UP</div><h3>Showcase</h3>
+          <p>Architecture, screenshots &amp; engineering decisions across AI, quant, and mobile — everything I can show without exposing private source.</p>
+        </div>
+        <span class="arr">Explore →</span>
       </a>
     </div>
   </section>
