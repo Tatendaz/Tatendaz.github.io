@@ -1,0 +1,7 @@
+# robots.txt for tatendaz.github.io
+# Served from the host root, so it governs every project page on this domain.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://tatendaz.github.io/sitemap.xml
