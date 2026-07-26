@@ -6,8 +6,10 @@
   tatendaz.github.io — including project pages served from other repos
   (/yapui/, /claude-usage/, ...). Those repos do not need sitemaps of their own.
 
-  When a new project page goes live, add it here and resubmit in Google Search
-  Console and Bing Webmaster Tools.
+  When a new project page goes live, add it here — this file discovers nothing on
+  its own. Crawlers re-fetch the sitemap on their own schedule, so appending the URL
+  is enough; resubmitting in Google Search Console / Bing Webmaster Tools only prods
+  them to look sooner.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 

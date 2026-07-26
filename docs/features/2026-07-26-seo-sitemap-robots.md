@@ -13,13 +13,26 @@ Only `/yapui/` had ever been submitted to Google Search Console. The root page,
 `/claude-usage/`, and `/familytreeapp-legal/` were all live and unsubmitted. Without a
 sitemap, getting them indexed means submitting each URL by hand in both Google Search
 Console and Bing Webmaster Tools, one at a time, and repeating that for every new page.
-With one, a single sitemap submission per tool covers the whole site and picks up
-additions automatically.
+With one, a single sitemap submission per tool covers the whole site. New pages still
+have to be appended to `sitemap.xml` by hand — a static file discovers nothing on its
+own — but crawlers re-fetch the sitemap on their own schedule, so adding a URL to the
+file is enough; resubmitting only prods them to look sooner.
 
 ## What changed
 - `sitemap.xml` — the 4 live URLs with real `lastmod` dates taken from each page's last
   source commit, plus `changefreq` and `priority`.
-- `robots.txt` — `Allow: /` for all agents and a `Sitemap:` line.
+- `robots.txt` — `Allow: /` for all agents, a `Sitemap:` line, and `Disallow` rules for
+  the per-project dev-docs folders (`/*/features/`, `/*/summaries/`, `/*/sessions/`).
+
+## Why the Disallow rules
+Project pages publish the whole `docs/` folder, which on these repos also holds the
+internal feature and session docs. They are served raw and reachable today —
+`https://tatendaz.github.io/yapui/summaries/2026-07-02-yapui-skill.md` returns `200`.
+Directory listings 404, so discovery is unlikely, but once crawling picks up there's no
+reason for session logs and feature notes to compete with the landing pages in search
+results. Everything there is already public on github.com, so this is search hygiene
+rather than access control — if any of it were actually sensitive, robots.txt would be
+the wrong tool.
 
 ## Notes
 - **Scope:** because the sitemap sits at the host root, it legitimately covers project

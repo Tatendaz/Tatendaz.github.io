@@ -4,4 +4,14 @@
 User-agent: *
 Allow: /
 
+# Project pages publish their whole docs/ folder, which includes the repo's
+# internal dev docs. Those files are served raw (e.g.
+# /yapui/summaries/2026-07-02-yapui-skill.md returns 200) and are thin,
+# duplicate content that shouldn't compete with the landing pages in search.
+# Everything here is already public on github.com — this is search hygiene,
+# not access control.
+Disallow: /*/features/
+Disallow: /*/summaries/
+Disallow: /*/sessions/
+
 Sitemap: https://tatendaz.github.io/sitemap.xml
