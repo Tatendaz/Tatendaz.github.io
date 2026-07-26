@@ -10,6 +10,20 @@
   its own. Crawlers re-fetch the sitemap on their own schedule, so appending the URL
   is enough; resubmitting in Google Search Console / Bing Webmaster Tools only prods
   them to look sooner.
+
+  Only list URLs that already return 200. A sitemap entry pointing at a 404 is
+  reported as an error in Search Console and costs trust in the whole file.
+
+  Deliberately absent:
+    /Vergance/, /promptups/, /langchain-fde-curriculum/
+      Landing pages are merged, but GitHub Pages is not enabled on those repos yet,
+      so all three still 404. Add them once Settings -> Pages -> main / /docs is on
+      and the URLs resolve.
+    /familytreeapp-legal/
+      Live, but held back until the content is ready to be indexed.
+    /Tatendaz.github.io/
+      Serves a byte-identical copy of the root. Listing both would submit the same
+      page under two URLs.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
@@ -32,13 +46,6 @@
     <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://tatendaz.github.io/familytreeapp-legal/</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 
 </urlset>
