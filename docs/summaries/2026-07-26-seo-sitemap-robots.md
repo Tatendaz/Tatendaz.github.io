@@ -31,6 +31,13 @@
   are **not**, because Pages is still off on all three (`/pages` 404s, URLs 404). Also
   surfaced `/Tatendaz.github.io/`, which serves a byte-identical copy of the root.
 - Removed `/familytreeapp-legal/` on request — live, but not ready to be indexed.
+- **Third round: enabled Pages on the three repos** (`main` / `/docs`) via
+  `POST /repos/Tatendaz/<repo>/pages`, polled until all three built without error and
+  returned 200, then checked each served page for its title, canonical and both `ld+json`
+  blocks. Added the three URLs here and re-verified all six entries return 200.
+- Checked whether the root page needed a `rel=canonical` for the duplicate sub-path. It
+  already has one — plus `og:image`, `twitter:card`, `og:url` and JSON-LD, all added by
+  site PR #4 after this branch was cut.
 
 ## Decisions
 - **One sitemap at the host root, not one per repo.** A root-level sitemap's scope
@@ -39,11 +46,13 @@
 - **Left the not-yet-live pages out.** Landing pages for Vergance, promptups, and the
   LangChain FDE curriculum are being added in their own repos this session, but listing
   URLs that 404 would make Search Console report errors on the sitemap. They get added
-  once Pages is enabled for each. Their PRs merged later the same day and this still
-  holds — merging the PR doesn't publish the page; enabling Pages does.
-- **Recorded the exclusions in the file itself, not just here.** The sitemap now lists
-  every deliberately-absent URL with its reason in the header comment. A three-entry
-  sitemap on a host with five live pages looks like an oversight otherwise, and the next
-  person to open it would either re-add them or waste time working out why they're gone.
-- **Kept `index.html` untouched.** It's missing a canonical link, `og:image`, and
-  Twitter card tags, but that's a separate change and doesn't block submission.
+  once Pages is enabled for each. Their PRs merged later the same day and that did *not*
+  change it — merging a PR doesn't publish a page; enabling Pages does. Enabling it later
+  in the session is what finally let them in.
+- **Recorded the exclusions in the file itself, not just here.** The sitemap lists every
+  deliberately-absent URL with its reason in the header comment. A short list on a host
+  with more live pages than entries looks like an oversight otherwise, and the next person
+  to open it would either re-add them or waste time working out why they're gone.
+- **Kept `index.html` untouched.** The metadata gap that motivated leaving it alone is
+  gone anyway: site PR #4 added the canonical, `og:image`, `twitter:card` and JSON-LD
+  after this branch was cut. Nothing here needs to touch it.

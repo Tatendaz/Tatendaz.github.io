@@ -15,10 +15,6 @@
   reported as an error in Search Console and costs trust in the whole file.
 
   Deliberately absent:
-    /Vergance/, /promptups/, /langchain-fde-curriculum/
-      Landing pages are merged, but GitHub Pages is not enabled on those repos yet,
-      so all three still 404. Add them once Settings -> Pages -> main / /docs is on
-      and the URLs resolve.
     /familytreeapp-legal/
       Live, but held back until the content is ready to be indexed.
     /Tatendaz.github.io/
@@ -44,6 +40,27 @@
   <url>
     <loc>https://tatendaz.github.io/claude-usage/</loc>
     <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://tatendaz.github.io/Vergance/</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://tatendaz.github.io/promptups/</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://tatendaz.github.io/langchain-fde-curriculum/</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

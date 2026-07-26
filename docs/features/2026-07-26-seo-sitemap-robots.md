@@ -19,10 +19,12 @@ own — but crawlers re-fetch the sitemap on their own schedule, so adding a URL
 file is enough; resubmitting only prods them to look sooner.
 
 ## What changed
-- `sitemap.xml` — 3 URLs (the root, `/yapui/`, `/claude-usage/`) with real `lastmod` dates
-  taken from each page's last source commit, plus `changefreq` and `priority`. The header
-  comment records which live pages are deliberately excluded and why, so the short list
-  doesn't read as an oversight.
+- `sitemap.xml` — 6 URLs (the root, `/yapui/`, `/claude-usage/`, `/Vergance/`,
+  `/promptups/`, `/langchain-fde-curriculum/`) with real `lastmod` dates taken from each
+  page's last source commit, plus `changefreq` and `priority`. Every entry was confirmed
+  to return 200 before being listed. The header comment records which live pages are
+  deliberately excluded and why, so the shorter-than-expected list doesn't read as an
+  oversight.
 - `robots.txt` — `Allow: /` for all agents, a `Sitemap:` line, and `Disallow` rules for
   the per-project dev-docs folders (`/*/features/`, `/*/summaries/`, `/*/sessions/`).
 
@@ -45,14 +47,13 @@ the wrong tool.
   be indexed. Nothing blocks it from crawling — it's simply not advertised — so it can be
   added in one commit whenever that changes.
 - **`/Tatendaz.github.io/` is excluded as a duplicate.** The portfolio repo also serves
-  itself at that sub-path, byte-identical to the root (verified: same content hash).
-  Listing both would submit one page under two URLs. Worth a `rel=canonical` on the root
-  page pointing at `https://tatendaz.github.io/` so search engines pick the right one
-  regardless of which they find first — not done here, since it's outside this change.
-- **Follow-up:** the landing-page PRs for `Vergance`, `promptups`, and
-  `langchain-fde-curriculum` are now merged, but **Pages is not yet enabled** on any of
-  the three (`/pages` returns 404 and all three URLs 404). Turn on Settings → Pages →
-  `main` / `/docs` for each, confirm the URL returns 200, then add the three entries here
-  and resubmit.
-- The root `index.html` still has no `<link rel="canonical">`, no `og:image`, and no
-  Twitter card tags — worth a separate pass, out of scope here.
+  itself at that sub-path, byte-identical to the root (verified: same content hash), so
+  the homepage exists at two URLs. Listing both would submit one page twice. No further
+  fix is needed: the duplicate serves the root's `<link rel="canonical">` pointing at
+  `https://tatendaz.github.io/`, so search engines consolidate on the root whichever they
+  find first. Note a `robots.txt` `Disallow` would be the *wrong* tool here — a page
+  crawlers are forbidden to fetch is a page whose canonical they never read.
+- **The three project pages went live in this same session.** Pages was enabled on
+  `Vergance`, `promptups` and `langchain-fde-curriculum` (`main` / `/docs`); all three
+  built without error and now return 200, so they were added here. Merging a landing-page
+  PR does not publish anything on its own — enabling Pages is the separate step.
