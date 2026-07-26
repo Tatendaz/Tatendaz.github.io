@@ -29,6 +29,8 @@ Russian-localised LinkedIn URL over the English one.
   (+ width/height/alt), and Twitter card tags; JSON-LD `Person` + `WebSite`
   graph with `sameAs` pointing at the canonical profiles
   (github.com/Tatendaz, **www**.linkedin.com/in/tatendazhou, x.com/realtatendazhou).
+- `index.html` head: `rel=canonical` → `https://tatendaz.github.io/`, so the
+  `?theme=` query-parameter variants consolidate onto one URL.
 
 ## Notes
 - Google refreshes favicons on its own crawl schedule — expect days, not hours,
