@@ -22,9 +22,9 @@ Russian-localised LinkedIn URL over the English one.
 - `assets/avatar.jpg` — replaced with the current 460×460 headshot (also used
   by the hero image; same path, so no HTML change needed there).
 - New `favicon.ico` (48×48, PNG-compressed ICO) at the site root.
-- New `assets/icon-192.png` (192×192 — like the 48×48 ico, one of Google's
-  recommended multiple-of-48 sizes) and `assets/apple-touch-icon.png`
-  (180×180, Apple's standard touch-icon size) — both square and face-filling.
+- New `assets/icon-192.png` (192×192) and `assets/apple-touch-icon.png`
+  (180×180, Apple's standard touch-icon size) — square, face-filling, and
+  comfortably above Google's ≥48×48 favicon recommendation.
 - `index.html` head: icon links for all three; `og:site_name`, `og:image`
   (+ width/height/alt), and Twitter card tags; JSON-LD `Person` + `WebSite`
   graph with `sameAs` pointing at the canonical profiles
@@ -33,9 +33,10 @@ Russian-localised LinkedIn URL over the English one.
   `?theme=` query-parameter variants consolidate onto one URL.
 
 ## Notes
-- Google refreshes favicons on its own crawl schedule — expect days, not hours,
-  after merge. Requesting indexing of the homepage in Search Console (pending
-  setup) speeds it up.
+- Google refreshes favicons on its own crawl schedule — expect days (possibly
+  weeks) after merge. Requesting indexing of the homepage in Search Console
+  (pending setup) can prompt an earlier recrawl, but Google makes no timing
+  promises.
 - The `WebSite.name` markup is the documented signal for the site label that
   currently shows as "GitHub Pages documentation" — Google ultimately decides,
   but this is the lever it says it reads.
