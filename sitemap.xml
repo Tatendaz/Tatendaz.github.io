@@ -1,26 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Host-root sitemap for tatendaz.github.io.
-
-  Because this file sits at the root of the host, its scope covers every URL on
-  tatendaz.github.io — including project pages served from other repos
-  (/yapui/, /claude-usage/, ...). Those repos do not need sitemaps of their own.
-
-  When a new project page goes live, add it here — this file discovers nothing on
-  its own. Crawlers re-fetch the sitemap on their own schedule, so appending the URL
-  is enough; resubmitting in Google Search Console / Bing Webmaster Tools only prods
-  them to look sooner.
-
-  Only list URLs that already return 200. A sitemap entry pointing at a 404 is
-  reported as an error in Search Console and costs trust in the whole file.
-
-  Deliberately absent:
-    /familytreeapp-legal/
-      Live, but held back until the content is ready to be indexed.
-    /Tatendaz.github.io/
-      Serves a byte-identical copy of the root. Listing both would submit the same
-      page under two URLs.
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
