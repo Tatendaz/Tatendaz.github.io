@@ -6,6 +6,9 @@
 <title>Tatenda Zhou — Software &amp; Systems Architect</title>
 <meta name="description" content="Software & Systems Architect / SRE with 10+ years in enterprise software. I build AI agents, Web3, and native mobile apps — end to end. Open to consulting, advisory & speaking, remote.">
 <link rel="canonical" href="https://tatendaz.github.io/">
+<link rel="alternate" type="text/markdown" href="/index.md" title="Markdown version of this page">
+<link rel="describedby" href="/llms.txt">
+<meta name="author" content="Tatenda Zhou">
 <meta property="og:title" content="Tatenda Zhou — Software & Systems Architect">
 <meta property="og:description" content="10+ years building systems end-to-end: AI agents · Web3 · Mobile · SRE. Open to consulting, advisory & speaking — remote.">
 <meta property="og:type" content="website">
@@ -33,129 +36,50 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<style>
-  /* ---- light (editorial paper) ---- */
-  :root{
-    --paper:#F4F1E9; --surface:#FCFBF7; --raised:#FFFFFF;
-    --ink:#1A1613; --ink-2:#6E665A; --line:#E5DECF; --line-2:#D8CFBB;
-    --accent:#B0502E; --accent-press:#8C3D20; --on-accent:#FFFFFF; --accent-wash:rgba(176,80,46,.08);
-    --ok:#3F8F55; --nav-bg:rgba(244,241,233,.82); --avatar-gray:.18; --shadow:rgba(26,22,19,.12);
-  }
-  /* ---- dark (warm-charcoal editorial) ---- */
-  :root[data-theme="dark"]{
-    --paper:#161617; --surface:#1D1D1F; --raised:#232325;
-    --ink:#ECECEE; --ink-2:#9A9AA0; --line:#292A2C; --line-2:#35363A;
-    --accent:#C75E39; --accent-press:#A94B2C; --on-accent:#FFFFFF; --accent-wash:rgba(199,94,57,.12);
-    --ok:#5FBE7C; --nav-bg:rgba(22,22,23,.82); --avatar-gray:.10; --shadow:rgba(0,0,0,.5);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .25s ease,color .25s ease;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 28px;}
-  .disp{font-family:'Space Grotesk',sans-serif;}
-  .eyebrow{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);}
-
-  nav{position:sticky;top:0;z-index:20;background:var(--nav-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-  nav .row{display:flex;align-items:center;justify-content:space-between;height:62px;}
-  nav .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:-.2px;}
-  .navright{display:flex;align-items:center;gap:26px;}
-  nav .links{display:flex;gap:26px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:var(--ink-2);}
-  nav .links a:hover{color:var(--accent);}
-  @media(max-width:640px){
-    nav .row{flex-wrap:wrap;height:auto;padding:10px 0;row-gap:9px;}
-    .navright{width:100%;justify-content:space-between;gap:14px;}
-    nav .links{flex-wrap:wrap;gap:10px 14px;font-size:12px;}
-  }
-  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;
-    border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer;transition:.15s;}
-  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
-  .theme-toggle svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-  .theme-toggle .sun{display:none;} :root[data-theme="dark"] .theme-toggle .sun{display:block;}
-  :root[data-theme="dark"] .theme-toggle .moon{display:none;}
-
-  .hero{padding:84px 0 70px;}
-  .hero .inner{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;}
-  @media(max-width:760px){.hero .inner{grid-template-columns:1fr;}.hero{padding:56px 0 48px;}}
-  .pill{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:var(--ink);
-    background:var(--surface);border:1px solid var(--line-2);padding:7px 15px;border-radius:30px;}
-  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(63,143,85,.16);}
-  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(42px,7vw,68px);line-height:1.02;letter-spacing:-2.4px;margin:22px 0 10px;}
-  h1 .accent{color:var(--accent);}
-  .role{font-size:clamp(18px,3.2vw,23px);font-weight:600;color:var(--ink);}
-  .lede{color:var(--ink-2);font-size:18px;max-width:540px;margin:20px 0 30px;}
-  .cta{display:flex;flex-wrap:wrap;gap:11px;}
-  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;padding:12px 18px;border-radius:10px;
-    border:1px solid var(--line-2);background:var(--surface);color:var(--ink);transition:.15s;}
-  .btn:hover{border-color:var(--ink);transform:translateY(-1px);}
-  .btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}
-  .btn.primary:hover{background:var(--accent-press);border-color:var(--accent-press);}
-  .btn svg{width:16px;height:16px;}
-  .avatar{width:206px;height:248px;border-radius:14px;object-fit:cover;object-position:center 20%;
-    border:1px solid var(--line-2);box-shadow:0 18px 40px var(--shadow);filter:grayscale(var(--avatar-gray));}
-  @media(max-width:760px){.avatar{width:132px;height:150px;}}
-
-  section{padding:60px 0;border-top:1px solid var(--line);scroll-margin-top:80px;}
-  h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(27px,4.2vw,36px);letter-spacing:-1.1px;margin:12px 0 28px;max-width:760px;}
-
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
-  @media(max-width:680px){.grid{grid-template-columns:1fr;}}
-  .card{background:var(--surface);padding:26px 24px;}
-  .card .ic{color:var(--accent);}
-  .card .ic svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
-  .card h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;margin:14px 0 7px;letter-spacing:-.3px;}
-  .card p{color:var(--ink-2);font-size:15px;}
-
-  .band{background:var(--accent-wash);border:1px solid var(--line-2);border-left:3px solid var(--accent);border-radius:12px;
-    padding:32px 34px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-  .band h3{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;margin-bottom:8px;letter-spacing:-.4px;}
-  .band p{color:var(--ink-2);font-size:15.5px;max-width:600px;}
-
-  .worklist{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  @media(max-width:680px){.worklist{grid-template-columns:1fr;}}
-  .work{display:block;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:22px;transition:.15s;}
-  .work:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 14px 30px var(--shadow);}
-  .work .k{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2);font-weight:600;letter-spacing:1.2px;}
-  .work h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;margin:8px 0 8px;letter-spacing:-.3px;}
-  .work p{color:var(--ink-2);font-size:14px;}
-  .work .arr{color:var(--accent);font-weight:600;margin-top:14px;display:inline-block;font-size:13.5px;font-family:'JetBrains Mono',monospace;}
-  .work.wide{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-  .work.wide p{max-width:640px;}
-  .work.wide .arr{margin-top:0;white-space:nowrap;}
-
-  footer{padding:72px 0 46px;border-top:1px solid var(--line);text-align:center;scroll-margin-top:80px;}
-  footer .big{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5vw,44px);letter-spacing:-1.6px;}
-  footer .big .accent{color:var(--accent);}
-  footer .sub{color:var(--ink-2);margin:15px auto 28px;max-width:500px;}
-  footer .social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-  .copy{color:var(--ink-2);opacity:.7;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.3px;margin-top:42px;}
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://tatendaz.github.io/#person",
-      "name": "Tatenda Zhou",
-      "url": "https://tatendaz.github.io/",
-      "image": "https://tatendaz.github.io/assets/avatar.jpg",
-      "jobTitle": "Software & Systems Architect / SRE",
-      "email": "mailto:tatendaz@me.com",
-      "sameAs": [
-        "https://github.com/Tatendaz",
-        "https://www.linkedin.com/in/tatendazhou/",
-        "https://x.com/realtatendazhou"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://tatendaz.github.io/#website",
-      "url": "https://tatendaz.github.io/",
-      "name": "Tatenda Zhou",
-      "publisher": { "@id": "https://tatendaz.github.io/#person" }
-    }
+  "@type": "Person",
+  "@id": "https://tatendaz.github.io/#person",
+  "name": "Tatenda Zhou",
+  "givenName": "Tatenda",
+  "familyName": "Zhou",
+  "description": "Software & Systems Architect and SRE with 10+ years in enterprise software. Designs and ships AI agents, Web3 systems, and native iOS and Android apps end to end, and runs executive AI-adoption workshops. Available for consulting, fractional/advisory work, and speaking, remote worldwide.",
+  "url": "https://tatendaz.github.io/",
+  "mainEntityOfPage": "https://tatendaz.github.io/",
+  "image": "https://tatendaz.github.io/assets/avatar.jpg",
+  "jobTitle": "Software & Systems Architect / SRE",
+  "email": "mailto:tatendaz@me.com",
+  "knowsAbout": [
+    "AI agents",
+    "Multi-agent systems",
+    "Web3",
+    "Smart contracts",
+    "iOS",
+    "Android",
+    "Site reliability engineering",
+    "Cloud infrastructure",
+    "CI/CD",
+    "Monitoring and alerting"
+  ],
+  "sameAs": [
+    "https://github.com/Tatendaz",
+    "https://www.linkedin.com/in/tatendazhou/",
+    "https://x.com/realtatendazhou"
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://tatendaz.github.io/#website",
+  "url": "https://tatendaz.github.io/",
+  "name": "Tatenda Zhou",
+  "description": "Personal site of Tatenda Zhou, Software & Systems Architect / SRE. AI agents, Web3, native mobile, and end-to-end reliability.",
+  "inLanguage": "en",
+  "publisher": { "@id": "https://tatendaz.github.io/#person" }
 }
 </script>
 </head>
@@ -177,6 +101,8 @@
   </div>
 </div></nav>
 
+<main>
+
 <header class="hero"><div class="wrap inner">
   <div>
     <span class="pill"><span class="dot"></span>Open to consulting, advisory &amp; speaking — remote</span>
@@ -193,7 +119,7 @@
   <img class="avatar" src="assets/avatar.jpg" alt="Tatenda Zhou">
 </div></header>
 
-<main class="wrap">
+<div class="wrap">
 
   <section id="build">
     <div class="eyebrow">What I build</div>
@@ -274,6 +200,7 @@
     </div>
   </section>
 
+</div>
 </main>
 
 <footer id="contact"><div class="wrap">
@@ -284,6 +211,13 @@
     <a class="btn" href="https://github.com/Tatendaz" target="_blank" rel="noopener">GitHub</a>
     <a class="btn" href="https://www.linkedin.com/in/tatendazhou" target="_blank" rel="noopener">LinkedIn</a>
     <a class="btn" href="https://x.com/realtatendazhou" target="_blank" rel="noopener">X</a>
+  </div>
+  <div class="foot-links">
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/llms.txt">llms.txt</a>
+    <a href="/sitemap.xml">Sitemap</a>
   </div>
   <div class="copy">© 2026 Tatenda Zhou · Hand-built, served on GitHub Pages</div>
 </div></footer>
