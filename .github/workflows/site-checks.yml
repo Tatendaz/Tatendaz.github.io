@@ -1,0 +1,39 @@
+name: Site checks
+
+# Static checks run on every push to master and on every pull request.
+# They need nothing beyond the Python standard library on the runner.
+#
+# The live job checks the deployed site (status codes, content types, the
+# 404 body, every sitemap URL). It only runs when started by hand:
+# Actions → "Site checks" → "Run workflow", typically right after a merge
+# has finished deploying.
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    name: Static checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Run repo checks
+        run: make test
+
+  live:
+    name: Live site checks
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Check the deployed site
+        run: make test-live
+        env:
+          LIVE_SITE_URL: https://tatendaz.github.io

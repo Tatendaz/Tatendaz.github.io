@@ -15,3 +15,5 @@ Disallow: /*/summaries/
 Disallow: /*/sessions/
 
 Sitemap: https://tatendaz.github.io/sitemap.xml
+
+# Guide for AI agents (llms.txt format): https://tatendaz.github.io/llms.txt
