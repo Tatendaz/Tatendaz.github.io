@@ -95,8 +95,14 @@ class HomepageTests(unittest.TestCase):
     def test_main_has_enough_text_without_javascript(self):
         text = visible_text(self.main)
         self.assertGreaterEqual(len(text), 500, "audit bar: 500+ chars of raw text in <main>")
-        self.assertIn('class="hero"', self.main, "hero (pill, H1, lede) must stay inside <main>")
+        self.assertIn('<div class="hero">', self.main, "hero (pill, H1, lede) must stay inside <main>")
         self.assertIn("10+ years in enterprise software", text)
+
+    def test_no_boilerplate_elements_inside_main(self):
+        # Readability-style extractors drop <header>/<nav>/<aside>/<footer> before counting text
+        # and looking for the H1, so nothing that must count may live inside one.
+        for tag in ("<header", "<nav", "<aside", "<footer"):
+            self.assertNotIn(tag, self.main.lower(), f"{tag} inside <main> would hide content from agents")
 
     def test_jsonld_person_then_website(self):
         blocks = ld_json_blocks(self.doc)
@@ -168,11 +174,14 @@ class EveryPageTests(unittest.TestCase):
                 self.assertEqual(described, ["/llms.txt"])
 
     def test_exactly_one_h1_inside_main(self):
-        for path, rel in PAGES.items():
+        for path, rel in list(PAGES.items()) + [("/404", "404.html")]:
             with self.subTest(page=path):
                 doc = read(rel)
+                main = main_html(doc)
                 self.assertEqual(len(H1_RE.findall(doc)), 1)
-                self.assertEqual(len(H1_RE.findall(main_html(doc))), 1)
+                self.assertEqual(len(H1_RE.findall(main)), 1)
+                for tag in ("<header", "<nav", "<aside", "<footer"):
+                    self.assertNotIn(tag, main.lower(), f"{tag} inside <main> on {path}")
 
     def test_jsonld_blocks_are_valid(self):
         for path, rel in list(PAGES.items()) + [("/404", "404.html")]:
