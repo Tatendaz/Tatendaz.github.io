@@ -187,6 +187,8 @@ class EveryPageTests(unittest.TestCase):
             with self.subTest(page=path):
                 doc = read(rel)
                 self.assertIn('id="themeToggle"', doc)
+                self.assertIn('aria-pressed="false"', doc)
+                self.assertIn("setAttribute('aria-pressed'", doc)
                 self.assertIn("localStorage.getItem('theme')", doc)
                 self.assertIn('<footer id="contact">', doc)
                 self.assertIn('<link rel="stylesheet" href="/assets/site.css">', doc)

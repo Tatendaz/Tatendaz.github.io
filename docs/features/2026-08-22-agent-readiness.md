@@ -37,8 +37,11 @@ The audit's evidence, and what each item turned out to mean for this site:
   - `<header class="hero">` (pill, H1, lede, CTAs, avatar) moved inside `<main>`; the
     sections are wrapped in `<div class="wrap">` instead of `main.wrap`. Visual output is
     unchanged.
-  - Inline `<style>` extracted to `assets/site.css` (byte-for-byte the same rules, plus the
-    new `.page`/`.foot-links` rules) so the new pages share one stylesheet.
+  - Inline `<style>` extracted to `assets/site.css` (the same rules, plus the new
+    `.page`/`.foot-links` rules; two lint tweaks from review: `Inter` unquoted,
+    `currentcolor` lowercase) so the new pages share one stylesheet.
+  - Theme toggle on every page exposes `aria-pressed` (synced from the resolved theme and
+    after each click) with a state-neutral `aria-label="Dark mode"`.
   - JSON-LD rewritten as two top-level blocks: `Person` (name, givenName, familyName,
     description, url, mainEntityOfPage, image, jobTitle, email, knowsAbout, sameAs) and
     `WebSite` (name, url, description, inLanguage, publisher → Person).

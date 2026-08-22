@@ -46,6 +46,9 @@
   things this PR adds, which shows the harness works.
 - Served the branch locally and screenshotted the homepage, footer, About, Contact and 404
   pages in Chrome to confirm the design is unchanged and the new pages match it.
+- Opened PR #8 (`@coderabbitai ignore` + one manual review). CodeRabbit round 1: two minor
+  findings (theme toggle lacked `aria-pressed`; Stylelint on quoted `Inter` and
+  `currentColor` casing). Both fixed in one follow-up commit on all five pages.
 
 ## Decisions
 - **Fix the H1 by moving the hero into `<main>`, not by adding a second H1.** The audit's
