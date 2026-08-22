@@ -271,7 +271,8 @@ class NotFoundPageTests(unittest.TestCase):
         self.assertIsNotNone(m, "404 page needs a <pre class=\"md\"> Markdown block inside <main>")
         md = html.unescape(m.group(1)).strip()
         self.assertTrue(md.startswith("# 404"), md[:40])
-        for line in ("## Where to look next", f"- [Site map]({SITE}/sitemap.xml)", f"- [llms.txt]({SITE}/llms.txt)", f"[Home]({SITE}/)"):
+        for line in ("## Where to look next", f"- [Site map]({SITE}/sitemap.xml)", f"- [llms.txt]({SITE}/llms.txt)",
+                     f"[Home]({SITE}/)", f"[About]({SITE}/about/)", f"[Contact]({SITE}/contact/)"):
             self.assertIn(line, md)
         self.assertLess(len(md), 600, "keep the Markdown block short")
         self.assertNotRegex(md, r"<[a-z]+[\s>]", "the block must be plain Markdown, not HTML")
