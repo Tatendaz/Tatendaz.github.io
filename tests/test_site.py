@@ -36,6 +36,9 @@ ATTR_RE = re.compile(r'([A-Za-z_:][-A-Za-z0-9_:.]*)="([^"]*)"')
 LD_JSON_RE = re.compile(r'<script type="application/ld\+json">\s*(.*?)\s*</script>', re.S)
 H1_RE = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.S | re.I)
 HREF_RE = re.compile(r'href="([^"]*)"')
+# Elements that readability-style extractors drop as boilerplate before counting text.
+BOILERPLATE_TAG_RE = re.compile(r"<(header|nav|aside|footer)\b", re.I)
+HERO_DIV_RE = re.compile(r'<div\b[^>]*\bclass="[^"]*\bhero\b[^"]*"', re.I)
 LLMS_LINK_RE = re.compile(r"^- \[[^\]]+\]\((https?://[^)\s]+)\)(?:: .+)?$")
 
 
@@ -95,14 +98,8 @@ class HomepageTests(unittest.TestCase):
     def test_main_has_enough_text_without_javascript(self):
         text = visible_text(self.main)
         self.assertGreaterEqual(len(text), 500, "audit bar: 500+ chars of raw text in <main>")
-        self.assertIn('<div class="hero">', self.main, "hero (pill, H1, lede) must stay inside <main>")
+        self.assertRegex(self.main, HERO_DIV_RE, "hero (pill, H1, lede) must be a div inside <main>")
         self.assertIn("10+ years in enterprise software", text)
-
-    def test_no_boilerplate_elements_inside_main(self):
-        # Readability-style extractors drop <header>/<nav>/<aside>/<footer> before counting text
-        # and looking for the H1, so nothing that must count may live inside one.
-        for tag in ("<header", "<nav", "<aside", "<footer"):
-            self.assertNotIn(tag, self.main.lower(), f"{tag} inside <main> would hide content from agents")
 
     def test_jsonld_person_then_website(self):
         blocks = ld_json_blocks(self.doc)
@@ -177,11 +174,16 @@ class EveryPageTests(unittest.TestCase):
         for path, rel in list(PAGES.items()) + [("/404", "404.html")]:
             with self.subTest(page=path):
                 doc = read(rel)
-                main = main_html(doc)
                 self.assertEqual(len(H1_RE.findall(doc)), 1)
-                self.assertEqual(len(H1_RE.findall(main)), 1)
-                for tag in ("<header", "<nav", "<aside", "<footer"):
-                    self.assertNotIn(tag, main.lower(), f"{tag} inside <main> on {path}")
+                self.assertEqual(len(H1_RE.findall(main_html(doc))), 1)
+
+    def test_no_boilerplate_elements_inside_main(self):
+        # Readability-style extractors drop <header>/<nav>/<aside>/<footer> elements before
+        # counting text and looking for the H1, so nothing that must count may live inside one.
+        for path, rel in list(PAGES.items()) + [("/404", "404.html")]:
+            with self.subTest(page=path):
+                found = BOILERPLATE_TAG_RE.findall(main_html(read(rel)))
+                self.assertEqual(found, [], f"boilerplate element(s) inside <main> on {path}: {found}")
 
     def test_jsonld_blocks_are_valid(self):
         for path, rel in list(PAGES.items()) + [("/404", "404.html")]:

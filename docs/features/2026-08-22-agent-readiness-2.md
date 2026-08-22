@@ -22,10 +22,12 @@ targeted `.hero`.
 ## What changed
 - `index.html`: `<header class="hero">` → `<div class="hero">` (closing tag to match). No CSS
   change; `assets/site.css` never used a `header` selector.
-- `404.html`: "Project pages" → "Project pages and docs" in the pointer list.
-- `tests/test_site.py`: `test_no_boilerplate_elements_inside_main` (homepage) and the same
-  check inside `test_exactly_one_h1_inside_main` for every page including `404.html`; the hero
-  assertion now looks for `<div class="hero">`.
+- `404.html`: `llms.txt` is described as the "guide and docs index for AI agents" (the audit names
+  "sitemap, llms.txt, or docs index" as the pointers it wants).
+- `tests/test_site.py`: `test_no_boilerplate_elements_inside_main` checks every page including
+  `404.html` for `<header>`/`<nav>`/`<aside>`/`<footer>` *elements* inside `<main>` (tag-name
+  match, so prose or `<navbar>` cannot trip it); the hero assertion checks for a `div` carrying the
+  `hero` class token. (Both tightened after a Grok CLI review.)
 - The five project pages got the same change in their own PRs (yapui #12, claude-usage #17,
   Vergance #15, promptups #13, langchain-fde-curriculum #10): `<header>` → `<div class="hero">`
   with the single `header {…}` rule renamed to `.hero {…}`.
