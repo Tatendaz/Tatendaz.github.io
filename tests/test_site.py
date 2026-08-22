@@ -36,6 +36,11 @@ ATTR_RE = re.compile(r'([A-Za-z_:][-A-Za-z0-9_:.]*)="([^"]*)"')
 LD_JSON_RE = re.compile(r'<script type="application/ld\+json">\s*(.*?)\s*</script>', re.S)
 H1_RE = re.compile(r"<h1\b[^>]*>(.*?)</h1>", re.S | re.I)
 HREF_RE = re.compile(r'href="([^"]*)"')
+# Elements that readability-style extractors drop as boilerplate before counting text.
+# A tag name ends at whitespace, "/" or ">", so <header-card> or <nav-item> do not match.
+BOILERPLATE_TAG_RE = re.compile(r"<(header|nav|aside|footer)(?=[\s/>])", re.I)
+# A <div> whose class attribute (not data-class) lists "hero" as a whole token (not foo-hero).
+HERO_DIV_RE = re.compile(r'<div(?=[\s/>])[^>]*\sclass="(?:[^"]*\s)?hero(?:\s[^"]*)?"', re.I)
 LLMS_LINK_RE = re.compile(r"^- \[[^\]]+\]\((https?://[^)\s]+)\)(?:: .+)?$")
 
 
@@ -95,7 +100,7 @@ class HomepageTests(unittest.TestCase):
     def test_main_has_enough_text_without_javascript(self):
         text = visible_text(self.main)
         self.assertGreaterEqual(len(text), 500, "audit bar: 500+ chars of raw text in <main>")
-        self.assertIn('class="hero"', self.main, "hero (pill, H1, lede) must stay inside <main>")
+        self.assertRegex(self.main, HERO_DIV_RE, "hero (pill, H1, lede) must be a div inside <main>")
         self.assertIn("10+ years in enterprise software", text)
 
     def test_jsonld_person_then_website(self):
@@ -168,11 +173,31 @@ class EveryPageTests(unittest.TestCase):
                 self.assertEqual(described, ["/llms.txt"])
 
     def test_exactly_one_h1_inside_main(self):
-        for path, rel in PAGES.items():
+        for path, rel in list(PAGES.items()) + [("/404", "404.html")]:
             with self.subTest(page=path):
                 doc = read(rel)
                 self.assertEqual(len(H1_RE.findall(doc)), 1)
                 self.assertEqual(len(H1_RE.findall(main_html(doc))), 1)
+
+    def test_no_boilerplate_elements_inside_main(self):
+        # Readability-style extractors drop <header>/<nav>/<aside>/<footer> elements before
+        # counting text and looking for the H1, so nothing that must count may live inside one.
+        for path, rel in list(PAGES.items()) + [("/404", "404.html")]:
+            with self.subTest(page=path):
+                found = BOILERPLATE_TAG_RE.findall(main_html(read(rel)))
+                self.assertEqual(found, [], f"boilerplate element(s) inside <main> on {path}: {found}")
+
+    def test_boilerplate_and_hero_patterns_stop_at_tag_boundaries(self):
+        # Near-miss markup must not match; \b-style boundaries would accept all of these.
+        for near_miss in ("<header-card>", "<nav-item>", "<footer_note>", "<asideways>"):
+            self.assertIsNone(BOILERPLATE_TAG_RE.search(near_miss), near_miss)
+        for real in ("<header>", '<nav class="x">', "<footer/>", "<aside\n>"):
+            self.assertIsNotNone(BOILERPLATE_TAG_RE.search(real), real)
+        for near_miss in ('<div-thing class="hero">', '<div data-class="hero">',
+                          '<div class="foo-hero">', '<div class="hero-card">'):
+            self.assertIsNone(HERO_DIV_RE.search(near_miss), near_miss)
+        for real in ('<div class="hero">', '<div class="card hero">', '<div id="top" class="hero card">'):
+            self.assertIsNotNone(HERO_DIV_RE.search(real), real)
 
     def test_jsonld_blocks_are_valid(self):
         for path, rel in list(PAGES.items()) + [("/404", "404.html")]:
