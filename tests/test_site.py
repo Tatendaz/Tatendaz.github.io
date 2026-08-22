@@ -264,6 +264,18 @@ class NotFoundPageTests(unittest.TestCase):
         for project in EXTERNAL_PROJECT_PATHS:
             self.assertIn(f"{SITE}/{project}/", hrefs)
 
+    def test_markdown_pointer_block_for_agents(self):
+        # The Is Agentic "Agent-friendly 404s" check gives full credit only when the 404 body
+        # carries short Markdown guidance that points at the sitemap, llms.txt or a docs index.
+        m = re.search(r'<pre class="md"[^>]*>(.*?)</pre>', main_html(self.doc), re.S)
+        self.assertIsNotNone(m, "404 page needs a <pre class=\"md\"> Markdown block inside <main>")
+        md = html.unescape(m.group(1)).strip()
+        self.assertTrue(md.startswith("# 404"), md[:40])
+        for line in ("## Where to look next", f"- [Site map]({SITE}/sitemap.xml)", f"- [llms.txt]({SITE}/llms.txt)", f"[Home]({SITE}/)"):
+            self.assertIn(line, md)
+        self.assertLess(len(md), 600, "keep the Markdown block short")
+        self.assertNotRegex(md, r"<[a-z]+[\s>]", "the block must be plain Markdown, not HTML")
+
     def test_no_canonical_or_alternate(self):
         rels = {l.get("rel") for l in head_links(self.doc)}
         self.assertNotIn("canonical", rels)
