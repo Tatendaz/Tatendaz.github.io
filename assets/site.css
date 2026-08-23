@@ -115,5 +115,6 @@ footer .social{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 .page .cta{margin:8px 0 28px;}
 .page .btn{text-decoration:none;color:var(--ink);}
 .page .btn.primary{color:var(--on-accent);}
+.page pre.md{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;line-height:1.55;color:var(--ink-2);background:var(--surface,rgba(127,127,127,.08));border:1px solid var(--line,rgba(127,127,127,.25));border-radius:10px;padding:16px 18px;margin:0 0 16px;white-space:pre-wrap;overflow-wrap:anywhere;overflow-x:auto;}
 .page code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:1px 6px;}
 .page .meta{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-2);letter-spacing:.3px;margin-top:36px;}

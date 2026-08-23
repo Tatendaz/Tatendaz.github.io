@@ -49,6 +49,9 @@ class LiveSiteTests(unittest.TestCase):
         self.assertTrue(ctype.startswith("text/html"), ctype)
         for pointer in ("sitemap.xml", "llms.txt", "Page not found"):
             self.assertIn(pointer, body)
+        # Markdown guidance block for agents (see test_site.NotFoundPageTests).
+        for md_line in ("# 404", "- [Site map](https://tatendaz.github.io/sitemap.xml)", "- [llms.txt](https://tatendaz.github.io/llms.txt)"):
+            self.assertIn(md_line, body)
 
     def test_llms_txt_is_plain_text(self):
         status, ctype, body = fetch("/llms.txt")
