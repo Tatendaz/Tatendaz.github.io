@@ -83,6 +83,14 @@ class LiveSiteTests(unittest.TestCase):
         self.assertTrue(ctype.startswith("text/plain"), ctype)
         self.assertIn("Sitemap:", body)
 
+    def test_homepage_links_every_agent_tool_page(self):
+        from tests.test_site import AGENT_PROJECTS
+        _, _, home = fetch("/")
+        for name in AGENT_PROJECTS:
+            with self.subTest(project=name):
+                self.assertIn(f'href="{BASE}/{name}/"', home)
+                self.assertEqual(fetch(f"/{name}/")[0], 200)
+
     def test_custom_404_page_has_its_stylesheet(self):
         status, _, body = fetch("/404.html")
         # The file itself is served as a normal page ...

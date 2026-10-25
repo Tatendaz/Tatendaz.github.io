@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About — Tatenda Zhou</title>
-<meta name="description" content="Who Tatenda Zhou is: Software & Systems Architect / SRE with 10+ years in enterprise software, building AI agents, Web3, and native mobile apps end to end. Open to consulting, advisory and speaking, remote.">
+<title>About | Tatenda Zhou</title>
+<meta name="description" content="Who Tatenda Zhou is: Software & Systems Architect / SRE with 10+ years in enterprise software. Builds open-source tools for AI coding agents and runs coding-agent workshops for engineering teams.">
 <meta name="author" content="Tatenda Zhou">
 <link rel="canonical" href="https://tatendaz.github.io/about/">
 <link rel="alternate" type="text/markdown" href="/about/index.md" title="Markdown version of this page">
 <link rel="describedby" href="/llms.txt">
-<meta property="og:title" content="About — Tatenda Zhou">
-<meta property="og:description" content="Who Tatenda Zhou is: Software & Systems Architect / SRE with 10+ years in enterprise software, building AI agents, Web3, and native mobile apps end to end. Open to consulting, advisory and speaking, remote.">
+<meta property="og:title" content="About | Tatenda Zhou">
+<meta property="og:description" content="Who Tatenda Zhou is: Software & Systems Architect / SRE with 10+ years in enterprise software. Builds open-source tools for AI coding agents and runs coding-agent workshops for engineering teams.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tatendaz.github.io/about/">
 <meta property="og:site_name" content="Tatenda Zhou">
@@ -20,7 +20,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <script>
-  // set theme before paint to avoid flash — order: ?theme= > saved > system
+  // set theme before paint to avoid flash. Order: ?theme= > saved > system
   (function(){try{
     var q=new URLSearchParams(location.search).get('theme');
     var s=localStorage.getItem('theme');
@@ -39,7 +39,7 @@
   "@id": "https://tatendaz.github.io/about/#webpage",
   "url": "https://tatendaz.github.io/about/",
   "name": "About Tatenda Zhou",
-  "description": "Who Tatenda Zhou is: Software & Systems Architect / SRE with 10+ years in enterprise software, building AI agents, Web3, and native mobile apps end to end.",
+  "description": "Who Tatenda Zhou is: Software & Systems Architect / SRE with 10+ years in enterprise software. Builds open-source tools for AI coding agents.",
   "inLanguage": "en",
   "isPartOf": { "@id": "https://tatendaz.github.io/#website" },
   "about": { "@id": "https://tatendaz.github.io/#person" },
@@ -66,10 +66,10 @@
   <a class="brand" href="/">Tatenda&nbsp;Zhou</a>
   <div class="navright">
     <div class="links">
-      <a href="/#build">What I build</a>
-      <a href="/#leaders">For leaders</a>
-      <a href="/#work">Selected work</a>
-      <a href="/#contact">Contact</a>
+      <a href="/#projects">Projects</a>
+      <a href="/#workshops">Workshops</a>
+      <a href="/#talks">Talks</a>
+      <a href="/#contact">Follow</a>
     </div>
     <button class="theme-toggle" id="themeToggle" aria-label="Dark mode" aria-pressed="false" title="Toggle dark mode">
       <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
@@ -81,52 +81,62 @@
 <main><div class="wrap"><article class="page">
   <div class="eyebrow">About</div>
   <h1>About Tatenda Zhou</h1>
-  <p class="lede">I am a Software &amp; Systems Architect and SRE with 10+ years in enterprise software. I design and ship systems end-to-end — from the first prototype to a production deployment with cloud infrastructure, CI/CD, monitoring and alerting behind it.</p>
+  <p class="lede">I am a Software &amp; Systems Architect and SRE with 10+ years in enterprise software. These days I build open-source tools that review, test and measure the work of AI coding agents, and I teach engineering teams to hand real work to those agents.</p>
 
-  <h2>What I build</h2>
+  <h2>What I work on</h2>
   <ul>
-    <li><strong>AI agents.</strong> Production agents and multi-agent systems, taken from prototype to reliable, observable deployment.</li>
-    <li><strong>Web3.</strong> Smart contracts and on-chain tooling, integrated with real products and real users.</li>
-    <li><strong>Native mobile.</strong> iOS &amp; Android apps built for the store — auth, payments, polish, the whole path.</li>
-    <li><strong>End-to-end &amp; SRE.</strong> Cloud infra, CI/CD, monitoring &amp; alerting. I own reliability, not just features.</li>
+    <li><strong>Tools for AI coding agents.</strong> Review gates, a second agent that tests mobile apps before a PR opens, quota meters and model pickers. All open source; the list is below.</li>
+    <li><strong>Agent evaluation.</strong> I benchmarked Codex models on 50 SWE-bench Verified tasks and found agents reading outside their workspace in 14 of 304 runs. The report is <a href="https://github.com/openai/codex/issues/53166">openai/codex#53166</a>.</li>
+    <li><strong>Native mobile.</strong> iOS and Android apps built for the store: auth, payments, polish.</li>
+    <li><strong>Reliability.</strong> Cloud infrastructure, CI/CD, monitoring and alerting. I own reliability, not just features.</li>
   </ul>
 
-  <h2>For business leaders</h2>
-  <p>I run <strong>executive AI-adoption workshops</strong>: hands-on sessions that get a whole team using AI daily, so productivity and ROI actually go up. They are practical, tailored to how your business works, and measured by what changes afterwards.</p>
+  <h2>Workshops for engineering teams</h2>
+  <p><strong>From chat to coding agent</strong> is a half-day or full-day workshop for teams of 5 to 20 developers. Each developer hands a real ticket from the team's backlog to a coding agent, then we set up the checks that stop bad work before it reaches main. Remote first, flat fee per team. Details are on the <a href="/#workshops">home page</a>.</p>
 
-  <h2>Open-source work</h2>
-  <p>A few things I have shipped in the open. Each link goes to the GitHub repository; several also have a project page on this host.</p>
+  <h2>Podcasts and talks</h2>
+  <p>I am open to podcast interviews and talks about AI coding agents: how to check their work, what they cost, and how to run several at once.</p>
+
+  <h2>Open-source tools for coding agents</h2>
+  <p>Each has a project page on this site and its source on GitHub.</p>
   <ul>
-    <li><a href="https://github.com/Tatendaz/promptups">promptups</a> — do reps while Claude thinks: webcam rep counting wired into Claude Code hooks, with a trash-talking coach. <a href="/promptups/">Project page</a>.</li>
-    <li><a href="https://github.com/Tatendaz/claude-usage">claude-usage</a> — your Claude quota, live in the terminal status bar (iTerm2, tmux, WezTerm, kitty, starship). <a href="/claude-usage/">Project page</a>.</li>
-    <li><a href="https://github.com/Tatendaz/yapui">yapui</a> — live HTML preview with a two-way feedback loop between you and the coding agent. <a href="/yapui/">Project page</a>.</li>
-    <li><a href="https://github.com/Tatendaz/Vergance">Vergance</a> — gaze + voice as a hands-free input layer for macOS. <a href="/Vergance/">Project page</a>.</li>
-    <li><a href="https://github.com/Tatendaz/herdr-launcher">herdr-launcher</a> — unofficial macOS Dock launcher for the herdr TUI.</li>
-    <li><a href="https://github.com/Tatendaz/langchain-fde-curriculum">LangChain FDE curriculum</a> — a deliverable-driven curriculum for shipping production agents as a forward-deployed engineer. <a href="/langchain-fde-curriculum/">Project page</a>.</li>
-    <li><a href="https://github.com/Tatendaz/showcase">Showcase</a> — architecture, screenshots and engineering decisions from private work across AI, quant and mobile.</li>
+    <li><a href="/coderabbit-failover/">coderabbit-failover</a>: one CodeRabbit review budget shared across agents, with a local Claude Code backup review when CodeRabbit is rate-limited. <a href="https://github.com/Tatendaz/coderabbit-failover">Source</a>.</li>
+    <li><a href="/codeandconfirm/">CodeAndConfirm</a>: a second agent tests iOS and Android changes on the simulator and emulator before the PR opens. <a href="https://github.com/Tatendaz/codeandconfirm">Source</a>.</li>
+    <li><a href="/T-mods/">T-mods</a>: Claude Code mods, including one that refuses <code>gh pr merge</code> until CI is green and a real review exists. <a href="https://github.com/Tatendaz/T-mods">Source</a>.</li>
+    <li><a href="/QuotaSignal/">QuotaSignal</a>: ChatGPT and Codex weekly quota in the macOS menu bar or Windows tray. <a href="https://github.com/Tatendaz/QuotaSignal">Source</a>.</li>
+    <li><a href="/model-picker/">Model Picker</a>: model and effort suggestions for Codex and Claude Code. <a href="https://github.com/Tatendaz/model-picker">Source</a>.</li>
+    <li><a href="/mission-control/">Mission Control</a>: a project board built from git, PRs and Claude Code session logs. <a href="https://github.com/Tatendaz/mission-control">Source</a>.</li>
+    <li><a href="/herdr-launcher/">herdr-launcher</a>: unofficial macOS Dock launcher for the herdr TUI. <a href="https://github.com/Tatendaz/herdr-launcher">Source</a>.</li>
   </ul>
 
-  <h2>Work with me</h2>
-  <p>I am available for consulting, fractional / advisory work, and speaking — remote, worldwide. The fastest route is email: <a href="mailto:tatendaz@me.com?subject=Let%27s%20work%20together">tatendaz@me.com</a>. The <a href="/contact/">contact page</a> lists what to include.</p>
-
-  <h2>Elsewhere</h2>
+  <h2>More projects</h2>
   <ul>
-    <li>GitHub: <a href="https://github.com/Tatendaz">github.com/Tatendaz</a></li>
-    <li>LinkedIn: <a href="https://www.linkedin.com/in/tatendazhou">linkedin.com/in/tatendazhou</a></li>
+    <li><a href="https://github.com/Tatendaz/claude-usage">claude-usage</a>: your Claude quota, live in the terminal status bar. <a href="/claude-usage/">Project page</a>.</li>
+    <li><a href="https://github.com/Tatendaz/yapui">yapui</a>: live HTML preview with a two-way feedback loop between you and the coding agent. <a href="/yapui/">Project page</a>.</li>
+    <li><a href="https://github.com/Tatendaz/promptups">promptups</a>: webcam rep counting wired into Claude Code hooks. <a href="/promptups/">Project page</a>.</li>
+    <li><a href="https://github.com/Tatendaz/Vergance">Vergance</a>: gaze and voice as a hands-free input layer for macOS. <a href="/Vergance/">Project page</a>.</li>
+    <li><a href="https://github.com/Tatendaz/langchain-fde-curriculum">LangChain FDE curriculum</a>: shipping production agents as a forward-deployed engineer. <a href="/langchain-fde-curriculum/">Project page</a>.</li>
+    <li><a href="https://github.com/Tatendaz/showcase">Showcase</a>: architecture, screenshots and engineering decisions from private work across AI, quant and mobile.</li>
+  </ul>
+
+  <h2>Follow and contact</h2>
+  <ul>
     <li>X: <a href="https://x.com/realtatendazhou">@realtatendazhou</a></li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/tatendazhou">linkedin.com/in/tatendazhou</a></li>
+    <li>GitHub: <a href="https://github.com/Tatendaz">github.com/Tatendaz</a></li>
+    <li>Email for workshops, podcasts and talks: <a href="mailto:tatendaz@me.com">tatendaz@me.com</a>. The <a href="/contact/">contact page</a> lists what to include.</li>
   </ul>
 
-  <p class="meta">Machine-readable: this page carries JSON-LD (AboutPage → Person). Markdown version: <a href="/about/index.md">/about/index.md</a>. Agent guide: <a href="/llms.txt">/llms.txt</a>.</p>
+  <p class="meta">Machine-readable: this page carries JSON-LD (AboutPage, Person). Markdown version: <a href="/about/index.md">/about/index.md</a>. Agent guide: <a href="/llms.txt">/llms.txt</a>.</p>
 </article></div></main>
 
 <footer id="contact"><div class="wrap">
-  <div class="big">Let's build something <span class="accent">worth shipping.</span></div>
-  <p class="sub">Available for consulting, fractional / advisory work, and speaking — remote, worldwide.</p>
+  <div class="big">Follow along on <span class="accent">X and LinkedIn.</span></div>
+  <p class="sub">New tools, and what I learn from running coding agents every day. For workshops, podcasts and talks, email <a class="mail" href="mailto:tatendaz@me.com">tatendaz@me.com</a>.</p>
   <div class="social">
-    <a class="btn primary" href="mailto:tatendaz@me.com?subject=Hello%20Tatenda">tatendaz@me.com</a>
+    <a class="btn primary" href="https://x.com/realtatendazhou" target="_blank" rel="noopener">Follow on X</a>
+    <a class="btn" href="https://www.linkedin.com/in/tatendazhou" target="_blank" rel="noopener">Follow on LinkedIn</a>
     <a class="btn" href="https://github.com/Tatendaz" target="_blank" rel="noopener">GitHub</a>
-    <a class="btn" href="https://www.linkedin.com/in/tatendazhou" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://x.com/realtatendazhou" target="_blank" rel="noopener">X</a>
   </div>
   <div class="foot-links">
     <a href="/about/">About</a>
@@ -135,7 +145,7 @@
     <a href="/llms.txt">llms.txt</a>
     <a href="/sitemap.xml">Sitemap</a>
   </div>
-  <div class="copy">© 2026 Tatenda Zhou · Hand-built, served on GitHub Pages</div>
+  <div class="copy">© 2026 Tatenda Zhou. Hand-built, served on GitHub Pages.</div>
 </div></footer>
 
 <script>
