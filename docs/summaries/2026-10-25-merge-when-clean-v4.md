@@ -1,4 +1,4 @@
-# Session: merge-when-clean template v5
+# Session: merge-when-clean template v6
 
 **Branch:** security/merge-when-clean-v4
 **Date:** 2026-10-25
