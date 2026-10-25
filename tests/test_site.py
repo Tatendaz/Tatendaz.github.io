@@ -26,8 +26,22 @@ PAGES = {
     "/privacy/": "privacy/index.html",
 }
 TRUST_PAGES = ("/about/", "/contact/", "/privacy/")
+# Agent-tool project pages (built 2026-10-19), reliability and review first. Each is a
+# GitHub Pages site served from its own repo under this host.
+AGENT_PROJECTS = (
+    "coderabbit-failover",
+    "codeandconfirm",
+    "T-mods",
+    "QuotaSignal",
+    "model-picker",
+    "mission-control",
+    "herdr-launcher",
+)
 # Project pages live in other repositories; only the live test can check them.
-EXTERNAL_PROJECT_PATHS = {"yapui", "claude-usage", "Vergance", "promptups", "langchain-fde-curriculum"}
+EXTERNAL_PROJECT_PATHS = {"yapui", "claude-usage", "Vergance", "promptups", "langchain-fde-curriculum", *AGENT_PROJECTS}
+# Files a reader or agent sees; positioning rules apply to all of them.
+PUBLIC_TEXT_FILES = ("index.html", "index.md", "llms.txt", "about/index.html", "about/index.md",
+                     "contact/index.html", "contact/index.md", "privacy/index.html", "privacy/index.md", "404.html")
 
 TAG_RE = re.compile(r"<[^>]+>")
 SCRIPT_STYLE_RE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.S | re.I)
@@ -140,6 +154,90 @@ class HomepageTests(unittest.TestCase):
         for repo in repos:
             self.assertIn(repo, twin, f"index.md is missing {repo}")
         self.assertIn("tatendaz@me.com", twin)
+
+
+class ProjectLinkTests(unittest.TestCase):
+    """The homepage, its twin, About, llms.txt and the sitemap all point at every agent-tool page."""
+
+    def test_homepage_links_every_project_page_and_repo_in_order(self):
+        main = main_html(read("index.html"))
+        hrefs = HREF_RE.findall(main)
+        positions = []
+        for name in AGENT_PROJECTS:
+            with self.subTest(project=name):
+                self.assertIn(f"{SITE}/{name}/", hrefs)
+                self.assertIn(f"https://github.com/Tatendaz/{name}", hrefs)
+                positions.append(hrefs.index(f"{SITE}/{name}/"))
+        self.assertEqual(positions, sorted(positions), "project cards must keep the review-first order")
+        # The agent tools come before the older "More projects" list.
+        self.assertLess(main.index('id="projects"'), main.index('id="work"'))
+
+    def test_twins_llms_and_sitemap_list_every_project_page(self):
+        sitemap_locs = re.findall(r"<loc>(.*?)</loc>", read("sitemap.xml"))
+        for name in AGENT_PROJECTS:
+            page = f"{SITE}/{name}/"
+            with self.subTest(project=name):
+                self.assertIn(page, sitemap_locs)
+                for rel in ("index.md", "llms.txt", "about/index.md"):
+                    self.assertIn(page, read(rel), f"{rel} is missing {page}")
+                self.assertIn(f'href="/{name}/"', read("about/index.html"))
+
+    def test_local_file_for_treats_project_pages_as_external(self):
+        for name in AGENT_PROJECTS:
+            self.assertIsNone(local_file_for(f"/{name}/"))
+        self.assertEqual(local_file_for("/about/"), ROOT / "about/index.html")
+
+
+class PositioningTests(unittest.TestCase):
+    """Owner decisions of 2026-10-20: follow buttons first, workshops second, no Web3, no prices."""
+
+    def test_hero_leads_with_follow_buttons(self):
+        main = main_html(read("index.html"))
+        hero = main[: main.index('id="projects"')]
+        x = hero.index('href="https://x.com/realtatendazhou"')
+        linkedin = hero.index('href="https://www.linkedin.com/in/tatendazhou"')
+        self.assertLess(x, linkedin)
+        self.assertIn(">Follow on X<", hero)
+        self.assertIn(">Follow on LinkedIn<", hero)
+        self.assertNotIn("mailto:", hero, "email is the second offer, not a hero CTA")
+
+    def test_workshop_and_talks_sections_with_email(self):
+        main = main_html(read("index.html"))
+        for anchor, subject in (("workshops", "Workshop%20enquiry"), ("talks", "Podcast%20or%20talk")):
+            with self.subTest(section=anchor):
+                start = main.index(f'id="{anchor}"')
+                end = main.index("</section>", start)
+                self.assertIn(f"mailto:tatendaz@me.com?subject={subject}", main[start:end])
+        self.assertIn("Flat fee per team", visible_text(main))
+        start = main.index('id="workshops"')
+        workshop = visible_text(main[start: main.index("</section>", start)])
+        self.assertIn("Pilot pricing for the first 3 teams", workshop)
+        self.assertIn("tatendaz@me.com", workshop)
+
+    def test_talks_section_cites_the_podcast_and_toastmasters(self):
+        main = main_html(read("index.html"))
+        start = main.index('id="talks"')
+        talks = main[start: main.index("</section>", start)]
+        self.assertIn('href="https://www.youtube.com/watch?v=w9U4Nsl0aL0"', talks)
+        text = visible_text(talks)
+        for fact in ("Koshelek Team", "in Russian", "Toastmasters club in Saint Petersburg"):
+            self.assertIn(fact, text)
+        for rel in ("index.md", "about/index.md", "contact/index.md", "llms.txt"):
+            self.assertIn("https://www.youtube.com/watch?v=w9U4Nsl0aL0", read(rel), rel)
+
+    def test_no_web3_prices_newsletter_or_overclaims(self):
+        for rel in PUBLIC_TEXT_FILES:
+            text = read(rel)
+            with self.subTest(file=rel):
+                self.assertNotRegex(text, r"(?i)web3|smart contract|on-chain")
+                self.assertNotRegex(text, r"\$\s?\d", "workshop prices stay off the site")
+                self.assertNotRegex(text, r"(?i)newsletter|subscribe")
+                self.assertNotRegex(text, r"(?i)openai confirmed")
+
+    def test_no_em_or_en_dashes_in_rewritten_copy(self):
+        for rel in PUBLIC_TEXT_FILES:
+            with self.subTest(file=rel):
+                self.assertNotRegex(read(rel), "[\u2013\u2014]")
 
 
 class EveryPageTests(unittest.TestCase):
