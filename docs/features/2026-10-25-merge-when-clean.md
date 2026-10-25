@@ -18,6 +18,9 @@ the file's only purpose.
 ## What changed
 - `.github/workflows/merge-when-clean.yml` (new): the template, unchanged.
 - `.coderabbit.yaml`: deleted.
+- `dependabot-auto-merge.yml`: deleted. It merged Dependabot patch/minor PRs
+  on green CI with no review, which bypassed merge-when-clean's review gate.
+  merge-when-clean.yml now merges Dependabot PRs after CI and a real review.
 
 ## Notes
 The site deploys through GitHub Pages' own branch build, not a workflow in
