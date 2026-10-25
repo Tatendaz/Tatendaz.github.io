@@ -5,7 +5,7 @@ I am a Software & Systems Architect and SRE with 10+ years in enterprise softwar
 ## What I work on
 
 - **Tools for AI coding agents.** Review gates, a second agent that tests mobile apps before a PR opens, quota meters and model pickers. All open source; the list is below.
-- **Agent evaluation.** I benchmarked Codex models on 50 SWE-bench Verified tasks and found agents reading outside their workspace in 14 of 304 runs. The report is [openai/codex#53166](https://github.com/openai/codex/issues/53166).
+- **Agent evaluation.** I benchmarked Codex models on 50 SWE-bench Verified tasks and found agents searching or reading files outside their workspace in 14 of 304 runs. The report is [openai/codex#53166](https://github.com/openai/codex/issues/53166).
 - **Native mobile.** iOS and Android apps built for the store: auth, payments, polish.
 - **Reliability.** Cloud infrastructure, CI/CD, monitoring and alerting. I own reliability, not just features.
 
