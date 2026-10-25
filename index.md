@@ -1,6 +1,6 @@
 # Tatenda Zhou: open-source tools for AI coding agents
 
-Software & Systems Architect, SRE. Open to work, workshops, podcasts and talks.
+Software & Systems Architect, SRE. Open to work, workshops and talks.
 
 10+ years in enterprise software. I build open-source tools that review, test and measure the work of AI coding agents.
 
