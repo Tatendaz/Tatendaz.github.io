@@ -152,6 +152,10 @@ h2 + h3.group{margin-top:0;}
 .talkrow{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
 .talkrow h2{margin:0 0 8px;}
 .talkrow p{color:var(--ink-2);font-size:16px;max-width:600px;}
+.creds{list-style:none;margin:14px 0 0;display:grid;gap:6px;max-width:600px;}
+.creds li{position:relative;padding-left:18px;color:var(--ink);font-size:15px;}
+.creds li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--accent);}
+.creds a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
 .morelist{display:grid;grid-template-columns:repeat(2,1fr);column-gap:40px;}
 @media(max-width:680px){.morelist{grid-template-columns:1fr;}}
 .morelist a{display:block;padding:14px 0;border-top:1px solid var(--line);}

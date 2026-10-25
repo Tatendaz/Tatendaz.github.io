@@ -46,6 +46,9 @@ Remote first. Half day (4 hours) or full day (7 hours). Flat fee per team. Ask a
 
 I'm open to podcast interviews and talks about AI coding agents: how to check their work, what they cost, and how to run several at once. Invite me: tatendaz@me.com (subject "Podcast or talk").
 
+- Podcast guest on Koshelek Team: ["From Zimbabwe to Russia: how a foreigner built a successful IT career"](https://www.youtube.com/watch?v=w9U4Nsl0aL0) (episode in Russian).
+- Former club president of a Toastmasters club in Saint Petersburg.
+
 ## More projects
 
 - [claude-usage](https://github.com/Tatendaz/claude-usage): your Claude quota, live in the terminal status bar: iTerm2, tmux, WezTerm, kitty, starship. Project page: https://tatendaz.github.io/claude-usage/

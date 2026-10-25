@@ -44,6 +44,10 @@ This is a static site on GitHub Pages: no API, no login, no server-side content 
 - [LangChain FDE curriculum](https://github.com/Tatendaz/langchain-fde-curriculum): curriculum for shipping production agents as a forward-deployed engineer. Python. Project page: https://tatendaz.github.io/langchain-fde-curriculum/
 - [Showcase](https://github.com/Tatendaz/showcase): architecture, screenshots and engineering decisions from private work across AI, quant and mobile.
 
+## Podcasts and speaking
+
+- [Koshelek Team podcast episode](https://www.youtube.com/watch?v=w9U4Nsl0aL0): "From Zimbabwe to Russia: how a foreigner built a successful IT career", a YouTube interview with Tatenda Zhou, in Russian. Tatenda is also a former club president of a Toastmasters club in Saint Petersburg.
+
 ## Machine-readable files
 
 - [Sitemap](https://tatendaz.github.io/sitemap.xml): every indexable page on this host, including the project pages served from other repositories.

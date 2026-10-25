@@ -10,6 +10,9 @@
    speaking/podcast line ... Add the 7 pages to sitemap.xml and llms.txt, and update the
    Markdown twins ... Update tests ... Light AND dark mode must both work. Mobile width must
    work." Defaults given: no workshop prices; no claim of past talks.
+2. Team lead follow-up with owner facts: "Podcast guest: Koshelek Team YouTube channel ...
+   Say the episode is in Russian. Former club president of a Toastmasters club in Saint
+   Petersburg. Do not add a club name or dates." This replaced the no-past-talks default.
 
 ## Steps taken
 - Read the positioning and contact memories, `~/Projects/boardy/workshop/workshop.md`, each

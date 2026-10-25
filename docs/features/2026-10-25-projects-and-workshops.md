@@ -17,7 +17,7 @@ that traffic is follows on X and LinkedIn first, workshops second (decision of 2
 - `index.html`: new hero copy and Follow buttons; `#projects` with the seven project pages and
   their repos, review and QA tools first (coderabbit-failover, CodeAndConfirm, T-mods), then
   QuotaSignal, Model Picker, Mission Control, herdr-launcher; a short `#evidence` note on
-  openai/codex#53166 (304 runs, 14 read outside the workspace); `#workshops` ("From chat to
+  openai/codex#53166 (304 runs, 14 searched or read outside the workspace); `#workshops` ("From chat to
   coding agent", flat fee per team, no prices); `#talks`; older projects in `#work`; footer
   with Follow buttons. JSON-LD Person and WebSite descriptions updated, Web3 removed.
 - `about/`, `contact/` (HTML and Markdown twins): same positioning; the contact page lists
@@ -36,7 +36,9 @@ that traffic is follows on X and LinkedIn first, workshops second (decision of 2
 ## Notes
 - Copy for each project comes from its GitHub description and its live page's meta
   description; no new numbers.
-- No workshop prices on the site, and no claim of past talks (owner never answered either
-  question; defaults chosen by the team lead).
+- No workshop prices on the site (owner has not set them).
+- Speaking record, from the owner on 2026-10-25: guest on the Koshelek Team podcast
+  (YouTube, in Russian) and former club president of a Toastmasters club in Saint
+  Petersburg. No club name or dates, because the owner gave none.
 - Consulting and fractional / advisory work no longer appear anywhere. Put a line back on
   `/contact/` if the owner still wants those enquiries.

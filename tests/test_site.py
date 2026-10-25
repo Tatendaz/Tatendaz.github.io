@@ -210,6 +210,17 @@ class PositioningTests(unittest.TestCase):
                 self.assertIn(f"mailto:tatendaz@me.com?subject={subject}", main[start:end])
         self.assertIn("Flat fee per team", visible_text(main))
 
+    def test_talks_section_cites_the_podcast_and_toastmasters(self):
+        main = main_html(read("index.html"))
+        start = main.index('id="talks"')
+        talks = main[start: main.index("</section>", start)]
+        self.assertIn('href="https://www.youtube.com/watch?v=w9U4Nsl0aL0"', talks)
+        text = visible_text(talks)
+        for fact in ("Koshelek Team", "in Russian", "Toastmasters club in Saint Petersburg"):
+            self.assertIn(fact, text)
+        for rel in ("index.md", "about/index.md", "contact/index.md", "llms.txt"):
+            self.assertIn("https://www.youtube.com/watch?v=w9U4Nsl0aL0", read(rel), rel)
+
     def test_no_web3_prices_newsletter_or_overclaims(self):
         for rel in PUBLIC_TEXT_FILES:
             text = read(rel)

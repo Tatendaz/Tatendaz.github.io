@@ -15,7 +15,7 @@ I am a Software & Systems Architect and SRE with 10+ years in enterprise softwar
 
 ## Podcasts and talks
 
-I am open to podcast interviews and talks about AI coding agents: how to check their work, what they cost, and how to run several at once.
+I am open to podcast interviews and talks about AI coding agents: how to check their work, what they cost, and how to run several at once. I was a guest on the Koshelek Team podcast (["From Zimbabwe to Russia: how a foreigner built a successful IT career"](https://www.youtube.com/watch?v=w9U4Nsl0aL0), in Russian), and I am a former club president of a Toastmasters club in Saint Petersburg.
 
 ## Open-source tools for coding agents
 
