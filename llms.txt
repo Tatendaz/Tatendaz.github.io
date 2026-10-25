@@ -1,6 +1,6 @@
 # Tatenda Zhou
 
-> Personal site of Tatenda Zhou, Software & Systems Architect / SRE with 10+ years in enterprise software. Tatenda builds open-source tools that review, test and measure the work of AI coding agents (Claude Code, Codex), runs coding-agent workshops for engineering teams, and is open to podcast interviews and talks. Remote, worldwide.
+> Personal site of Tatenda Zhou, Software & Systems Architect / SRE with 10+ years in enterprise software. Tatenda builds open-source tools that review, test and measure the work of AI coding agents (Claude Code, Codex), runs coding-agent workshops for engineering teams, and is open to podcast interviews and talks. Also open to full-time roles (remote, or relocation to the Netherlands, the UK, Ireland or Portugal) and consulting. Remote, worldwide.
 
 This is a static site on GitHub Pages: no API, no login, no server-side content negotiation. Every HTML page has a Markdown twin at the same path plus `index.md` (for example `/about/index.md`); fetch those for clean text, and treat the HTML `<link rel="alternate" type="text/markdown">` on each page as the pointer to its twin. Contact is by email only: tatendaz@me.com. Workshop prices are not published; it is a flat fee per team, quoted by email. Not a fit: support for other companies' products, job listings, eval or benchmark audits for clients, or anything that needs an API.
 
