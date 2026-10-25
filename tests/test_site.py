@@ -241,6 +241,16 @@ class PositioningTests(unittest.TestCase):
         for rel in ("index.md", "about/index.md", "contact/index.md", "llms.txt"):
             self.assertIn("https://www.youtube.com/watch?v=w9U4Nsl0aL0", read(rel), rel)
 
+    def test_contact_page_lists_jobs_and_consulting(self):
+        # Owner decision of 2026-10-26: open to work again, with relocation, plus consulting.
+        for rel in ("contact/index.html", "contact/index.md"):
+            with self.subTest(file=rel):
+                text = visible_text(read(rel)) if rel.endswith(".html") else read(rel)
+                self.assertIn("Jobs and consulting.", text)
+                self.assertIn("relocation to the Netherlands, the UK, Ireland or Portugal", text)
+                self.assertIn("mailto:tatendaz@me.com?subject=Job%20or%20consulting", read(rel))
+        self.assertIn("Open to work", visible_text(main_html(read("index.html"))))
+
     def test_no_web3_prices_newsletter_or_overclaims(self):
         for rel in PUBLIC_TEXT_FILES:
             text = read(rel)
