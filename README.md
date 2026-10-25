@@ -8,7 +8,9 @@ Static HTML, no build step (`.nojekyll`), served by GitHub Pages from `master`.
 
 - `index.html`: the homepage. Hero with Follow on X / LinkedIn buttons, the agent-tool project
   pages (`#projects`), the workshop (`#workshops`), podcasts and talks (`#talks`), and older
-  projects (`#work`). All styling lives in `assets/site.css`, shared by every page.
+  projects (`#work`). All styling lives in `assets/site.css`, shared by every page. Pages link it
+  as `site.css?v=<date>`: change that value on every page and in `STYLESHEET_LINK`
+  (`tests/test_site.py`) when the stylesheet changes, so browsers drop the cached copy.
 - `about/`, `contact/`, `privacy/`: the trust pages. Each folder holds `index.html` plus an
   `index.md` twin with the same content in Markdown.
 - `index.md`: Markdown twin of the homepage. Every HTML page advertises its twin with

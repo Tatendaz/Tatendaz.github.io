@@ -99,6 +99,9 @@ def local_file_for(url_path: str) -> Path | None:
     return ROOT / rel
 
 
+# Bump the ?v= value whenever assets/site.css changes, so browsers drop a cached copy.
+STYLESHEET_LINK = '<link rel="stylesheet" href="/assets/site.css?v=20261026">'
+
 class HomepageTests(unittest.TestCase):
     def setUp(self):
         self.doc = read("index.html")
@@ -141,11 +144,24 @@ class HomepageTests(unittest.TestCase):
 
     def test_stylesheet_is_shared_not_inline(self):
         self.assertNotIn("<style", self.doc)
-        self.assertIn('<link rel="stylesheet" href="/assets/site.css">', self.doc)
+        self.assertIn(STYLESHEET_LINK, self.doc)
         css = read("assets/site.css")
         self.assertIn(":root{", css)
         self.assertIn(':root[data-theme="dark"]{', css)
         self.assertIn(".page{", css)
+
+    def test_cards_use_a_number_not_a_thick_accent_stripe(self):
+        css = re.sub(r"/\*.*?\*/", "", read("assets/site.css"), flags=re.S)
+        rules = [(sel.strip(), body) for sel, body in re.findall(r"([^{}]+)\{([^{}]*)\}", css)]
+        boxes = [(sel, body) for sel, body in rules if re.search(r"\.(proj|band)(:[\w-]+)?$", sel)]
+        self.assertTrue(boxes)
+        for sel, body in boxes:
+            with self.subTest(selector=sel):
+                # No border of any width or shorthand in the accent colour on a card or the workshop box.
+                self.assertIsNone(re.search(r"border[\w-]*:[^;]*var\(--accent\)", body))
+        labels = dict(rules)
+        self.assertIn("counter-reset:proj", labels["#projects"])
+        self.assertIn("counter(proj,decimal-leading-zero)", labels[".proj .k::before"])
 
     def test_markdown_twin_lists_every_project(self):
         twin = read("index.md")
@@ -314,7 +330,7 @@ class EveryPageTests(unittest.TestCase):
                 self.assertIn("setAttribute('aria-pressed'", doc)
                 self.assertIn("localStorage.getItem('theme')", doc)
                 self.assertIn('<footer id="contact">', doc)
-                self.assertIn('<link rel="stylesheet" href="/assets/site.css">', doc)
+                self.assertIn(STYLESHEET_LINK, doc)
                 self.assertIn('<meta name="viewport"', doc)
                 self.assertNotIn("<style", doc)
 
