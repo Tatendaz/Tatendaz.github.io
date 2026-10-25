@@ -152,7 +152,9 @@ class HomepageTests(unittest.TestCase):
 
     def test_cards_use_a_number_not_a_thick_accent_stripe(self):
         css = read("assets/site.css")
-        self.assertIsNone(re.search(r"border-(top|left):\s*[3-9]px solid var\(--accent\)", css))
+        widths = [int(w) for w in re.findall(r"border-(?:top|left):\s*(\d+)px solid var\(--accent\)", css)]
+        # 2px strokes draw the workshop checkmarks; anything thicker is a decorative stripe.
+        self.assertTrue(all(w < 3 for w in widths), widths)
         self.assertIn("#projects{counter-reset:proj;}", css)
         self.assertIn("counter(proj,decimal-leading-zero)", css)
 
