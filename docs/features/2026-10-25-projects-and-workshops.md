@@ -36,7 +36,8 @@ that traffic is follows on X and LinkedIn first, workshops second (decision of 2
 ## Notes
 - Copy for each project comes from its GitHub description and its live page's meta
   description; no new numbers.
-- No workshop prices on the site (owner has not set them).
+- No workshop prices on the site. Owner decision of 2026-10-25: one line offers pilot
+  pricing for the first 3 teams, by email, with no number.
 - Speaking record, from the owner on 2026-10-25: guest on the Koshelek Team podcast
   (YouTube, in Russian) and former club president of a Toastmasters club in Saint
   Petersburg. No club name or dates, because the owner gave none.

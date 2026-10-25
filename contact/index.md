@@ -7,7 +7,7 @@ Email is the way to reach me: tatendaz@me.com. I work remotely with teams worldw
 
 ## What I am open to
 
-- **Workshops for engineering teams.** *From chat to coding agent*: a half-day or full-day remote workshop for 5 to 20 developers. Each developer hands a real ticket to a coding agent, and the team sets up the checks that stop bad work before it reaches main. Flat fee per team.
+- **Workshops for engineering teams.** *From chat to coding agent*: a half-day or full-day remote workshop for 5 to 20 developers. Each developer hands a real ticket to a coding agent, and the team sets up the checks that stop bad work before it reaches main. Flat fee per team, with pilot pricing for the first 3 teams.
 - **Podcasts.** Interviews about AI coding agents: checking their work, what they cost, and running several at once. Past episode: Koshelek Team, ["From Zimbabwe to Russia: how a foreigner built a successful IT career"](https://www.youtube.com/watch?v=w9U4Nsl0aL0) (in Russian).
 - **Talks.** Conference and meetup talks on the same topics, with live demos of my open-source tools. I am a former club president of a Toastmasters club in Saint Petersburg.
 

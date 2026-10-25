@@ -40,7 +40,7 @@ A half-day or full-day workshop for engineering teams of 5 to 20 developers. Eac
 - Your team writes down the checks an agent's change must pass.
 - One automatic gate goes into a real repo on the day.
 
-Remote first. Half day (4 hours) or full day (7 hours). Flat fee per team. Ask about a workshop: tatendaz@me.com (subject "Workshop enquiry").
+Remote first. Half day (4 hours) or full day (7 hours). Flat fee per team. Pilot pricing for the first 3 teams: email tatendaz@me.com to ask. Ask about a workshop: tatendaz@me.com (subject "Workshop enquiry").
 
 ## Podcasts and talks
 

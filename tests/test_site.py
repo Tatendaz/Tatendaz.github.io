@@ -209,6 +209,10 @@ class PositioningTests(unittest.TestCase):
                 end = main.index("</section>", start)
                 self.assertIn(f"mailto:tatendaz@me.com?subject={subject}", main[start:end])
         self.assertIn("Flat fee per team", visible_text(main))
+        start = main.index('id="workshops"')
+        workshop = visible_text(main[start: main.index("</section>", start)])
+        self.assertIn("Pilot pricing for the first 3 teams", workshop)
+        self.assertIn("tatendaz@me.com", workshop)
 
     def test_talks_section_cites_the_podcast_and_toastmasters(self):
         main = main_html(read("index.html"))

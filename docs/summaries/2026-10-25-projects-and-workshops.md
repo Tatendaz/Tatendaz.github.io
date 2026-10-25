@@ -13,6 +13,8 @@
 2. Team lead follow-up with owner facts: "Podcast guest: Koshelek Team YouTube channel ...
    Say the episode is in Russian. Former club president of a Toastmasters club in Saint
    Petersburg. Do not add a club name or dates." This replaced the no-past-talks default.
+3. Team lead, owner pricing decision: "show no number. In the workshops section, add one
+   line: pilot pricing for the first 3 teams, email to ask (tatendaz@me.com)."
 
 ## Steps taken
 - Read the positioning and contact memories, `~/Projects/boardy/workshop/workshop.md`, each
