@@ -95,7 +95,7 @@ class LiveSiteTests(unittest.TestCase):
         status, _, body = fetch("/404.html")
         # The file itself is served as a normal page ...
         self.assertEqual(status, 200)
-        self.assertIn('href="/assets/site.css"', body)
+        self.assertIn('href="/assets/site.css?v=', body)
         # ... and the stylesheet it relies on is reachable.
         self.assertEqual(fetch("/assets/site.css")[0], 200)
 
