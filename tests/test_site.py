@@ -151,12 +151,17 @@ class HomepageTests(unittest.TestCase):
         self.assertIn(".page{", css)
 
     def test_cards_use_a_number_not_a_thick_accent_stripe(self):
-        css = read("assets/site.css")
-        widths = [int(w) for w in re.findall(r"border-(?:top|left):\s*(\d+)px solid var\(--accent\)", css)]
-        # 2px strokes draw the workshop checkmarks; anything thicker is a decorative stripe.
-        self.assertTrue(all(w < 3 for w in widths), widths)
-        self.assertIn("#projects{counter-reset:proj;}", css)
-        self.assertIn("counter(proj,decimal-leading-zero)", css)
+        css = re.sub(r"/\*.*?\*/", "", read("assets/site.css"), flags=re.S)
+        rules = [(sel.strip(), body) for sel, body in re.findall(r"([^{}]+)\{([^{}]*)\}", css)]
+        boxes = [(sel, body) for sel, body in rules if re.search(r"\.(proj|band)(:[\w-]+)?$", sel)]
+        self.assertTrue(boxes)
+        for sel, body in boxes:
+            with self.subTest(selector=sel):
+                # No border of any width or shorthand in the accent colour on a card or the workshop box.
+                self.assertIsNone(re.search(r"border[\w-]*:[^;]*var\(--accent\)", body))
+        labels = dict(rules)
+        self.assertIn("counter-reset:proj", labels["#projects"])
+        self.assertIn("counter(proj,decimal-leading-zero)", labels[".proj .k::before"])
 
     def test_markdown_twin_lists_every_project(self):
         twin = read("index.md")
